@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Favicon (SVG approximation of the 'W' logo) -->
-    <link rel_icon="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M0 0 L20 100 L40 0 L60 100 L80 0 L100 100 L80 100 L70 20 L50 100 L30 20 L20 100 L0 100 Z' fill='%230f31ad'/></svg>">
+    <link rel="icon" type="image/x-icon" href="Wechnology-W-(white bg).png">
 
     <style>
         /* Define Brand Colors & Fonts */
@@ -159,13 +159,16 @@
         <nav class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <!-- SVG W Logo -->
-                    <svg class="h-8 w-auto" style="color: var(--color-blue);" fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 0 L20 100 L40 0 L60 100 L80 0 L100 100 L80 100 L70 20 L50 100 L30 20 L20 100 L0 100 Z"/>
-                    </svg>
-                    <span class="font-bold text-2xl" style="font-family: 'Raleway', sans-serif;">WECHNOLOGY</span>
-                </div>
+            <img 
+                src="Wechnology-W-(black bg).png" 
+                alt="Wechnology Logo: We Are Technology" 
+                class="w-16 md:w-24 mr-3" 
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <!-- Fallback text logo (hidden by default if image loads) -->
+            <div class="hidden">
+                <h1 class="text-3xl font-extrabold text-brand-blue">WECHNOLOGY</h1>
+            </div>
                 <!-- CTA -->
                 <a href="#the-ask" class="fomo-button">
                     <span class="hidden sm:inline">The ₦131.9M Ask</span>
