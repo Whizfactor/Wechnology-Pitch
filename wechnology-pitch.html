@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wechnology: The OS for Africa's 39.6M MSMEs</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts: Raleway (Headings) and Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Favicon (SVG approximation of the 'W' logo) -->
+    <link rel_icon="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M0 0 L20 100 L40 0 L60 100 L80 0 L100 100 L80 100 L70 20 L50 100 L30 20 L20 100 L0 100 Z' fill='%230f31ad'/></svg>">
+
+    <style>
+        /* Define Brand Colors & Fonts */
+        :root {
+            --color-blue: #0f31ad;
+            --color-green: #00a859;
+            --color-black: #000000;
+        }
+
+        /* Apply custom fonts via Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050a1a; /* A very dark, premium blue-black */
+            color: #f0f4f8;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
+
+        /* The FOMO Gradient Text */
+        .text-gradient {
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* The "Scary to Miss" Stat Block */
+        .fomo-stat {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .fomo-stat .stat-number {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem; /* 40px */
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: white;
+        }
+        
+        .fomo-stat .stat-number.gradient {
+            background: linear-gradient(90deg, #d0e, #0f31ad, #00a859);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-size: 2.75rem; /* Slightly larger for emphasis */
+        }
+
+        .fomo-stat .stat-label {
+            font-size: 0.875rem; /* 14px */
+            color: #94a3b8; /* Cool gray */
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* The "FOMO Active" CTA Button */
+        .fomo-button {
+            display: inline-block;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 168, 89, 0.2), 0 2px 5px rgba(15, 49, 173, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .fomo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 168, 89, 0.3), 0 4px 10px rgba(15, 49, 173, 0.4);
+        }
+
+        /* The "Ask" Card - designed to be the focal point */
+        .ask-card {
+            background: linear-gradient(145deg, rgba(15, 49, 173, 0.2), rgba(0, 168, 89, 0.1));
+            border: 1px solid var(--color-green);
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 168, 89, 0.3), 0 0 15px rgba(15, 49, 173, 0.5);
+            /* A subtle glow */
+            animation: pulse-glow 3s infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 10px 40px rgba(0, 168, 89, 0.2), 0 0 10px rgba(15, 49, 173, 0.3);
+            }
+            100% {
+                box-shadow: 0 10px 50px rgba(0, 168, 89, 0.4), 0 0 20px rgba(15, 49, 173, 0.6);
+            }
+        }
+
+        /* Responsive font sizes for headings */
+        h1 {
+            font-size: 2.25rem; /* 36px */
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 1.875rem; /* 30px */
+            line-height: 1.2;
+        }
+        @media (min-width: 640px) {
+            h1 {
+                font-size: 3rem; /* 48px */
+            }
+            h2 {
+                font-size: 2.25rem; /* 36px */
+            }
+        }
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 3.75rem; /* 60px */
+            }
+            h2 {
+                font-size: 3rem; /* 48px */
+            }
+            .fomo-stat .stat-number {
+                font-size: 3rem; /* 48px */
+            }
+            .fomo-stat .stat-number.gradient {
+                font-size: 3.25rem; /* 52px */
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-opacity-90 backdrop-blur-md" style="background-color: #050a1a;">
+        <nav class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <!-- SVG W Logo -->
+                    <svg class="h-8 w-auto" style="color: var(--color-blue);" fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0 L20 100 L40 0 L60 100 L80 0 L100 100 L80 100 L70 20 L50 100 L30 20 L20 100 L0 100 Z"/>
+                    </svg>
+                    <span class="font-bold text-2xl" style="font-family: 'Raleway', sans-serif;">WECHNOLOGY</span>
+                </div>
+                <!-- CTA -->
+                <a href="#the-ask" class="fomo-button">
+                    <span class="hidden sm:inline">The ₦131.9M Ask</span>
+                    <span class="sm:hidden">The Ask</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Section 1: Hero -->
+        <section class="py-16 sm:py-24 lg:py-32">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter">
+                    The "Infrastructure Tax" is <span class="text-gradient">Killing 99%</span> of Businesses.
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-gray-300">
+                    We're building the Offline-First, AI-Powered Operating System for 
+                    <span class="font-bold text-white">Africa's 39.6 Million MSMEs</span>
+                    who run on paper, generators, and unstable data.
+                </p>
+                
+                <!-- FOMO Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-4xl mx-auto">
+                    <div class="fomo-stat">
+                        <div class="stat-number">39.6M</div>
+                        <div class="stat-label">Nigerian MSMEs</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number gradient">₦3.44T</div>
+                        <div class="stat-label">Serviceable Market (SAM)</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Operate Manually</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Problem -->
+        <section class="py-16 sm:py-24 bg-opacity-50" style="background-color: rgba(255, 255, 255, 0.02);">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                        Why Every Other Tool Fails
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+                        Cloud-only, complex, USD-priced software doesn't work in Nigeria. The market is defined by three realities:
+                    </p>
+                </div>
+                
+                <!-- Problem Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12">
+                    <!-- Card 1: NO LIGHT -->
+                    <div class="fomo-stat text-left p-6">
+                        <span class="text-3xl">🚫</span>
+                        <h3 class="text-xl font-bold mt-4">NO LIGHT</h3>
+                        <p class="text-gray-300 mt-2">
+                            92 million Nigerians lack reliable electricity. Software that requires a constant connection to a desktop is dead on arrival.
+                        </p>
+                    </div>
+                    <!-- Card 2: NO INTERNET -->
+                    <div class="fomo-stat text-left p-6">
+                        <span class="text-3xl">📉</span>
+                        <h3 class="text-xl font-bold mt-4">NO INTERNET</h3>
+                        <p class="text-gray-300 mt-2">
+                            Unstable, expensive, and slow mobile data means "cloud-only" SaaS tools are frustrating, data-draining, and unreliable.
+                        </p>
+                    </div>
+                    <!-- Card 3: TOO HARD -->
+                    <div class="fomo-stat text-left p-6">
+                        <span class="text-3xl">🤯</span>
+                        <h3 class="text-xl font-bold mt-4">TOO HARD</h3>
+                        <p class="text-gray-300 mt-2">
+                            Complex, text-based UX built for Western accountants (like Tally) creates a massive learning curve. This is a barrier, not a tool.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The "Magic" Solution -->
+        <section class="py-16 sm:py-24 lg:py-32">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                        Our Solution: <span class="text-gradient">Offline-First "Magic"</span>
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+                        We win by building for the real world, not the ideal one. We beat Tally and the cloud giants on Day 1.
+                    </p>
+                </div>
+
+                <!-- Comparison -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 items-stretch">
+                    
+                    <!-- The "Old Way" -->
+                    <div class="fomo-stat p-6 sm:p-8 text-left border-red-500/30">
+                        <h3 class="text-2xl font-bold text-red-400">The "Old Way" (Tally & SaaS)</h3>
+                        <p class="text-gray-400 mt-2">The competition's fatal flaws.</p>
+                        <ul class="mt-6 space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-red-400 text-2xl mr-3">✕</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Clunky, Batch Sync</h4>
+                                    <p class="text-gray-400">Their "cloud" is a slow, manual add-on, not a real-time feature. It's unusable.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-400 text-2xl mr-3">✕</span>
+                                <div>
+                                    <h4 class="font-bold text-white">"Accountant-First" UX</h4>
+                                    <p class="text-gray-400">Dated, text-based UI that requires a paid "Tally operator" to even use.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-400 text-2xl mr-3">✕</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Dies Offline</h4>
+                                    <p class="text-gray-400">No internet? No power? Your business is closed. The software fails when you need it most.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- The "Wechnology Way" -->
+                    <div class="fomo-stat p-6 sm:p-8 text-left border-green-500/30">
+                        <h3 class="text-2xl font-bold text-green-400">The "Wechnology" Magic</h3>
+                        <p class="text-gray-300 mt-2">Our unbeatable advantages.</p>
+                        <ul class="mt-6 space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-green-400 text-2xl mr-3">✓</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Seamless Auto-Sync</h4>
+                                    <p class="text-gray-300">"It just works." Run your business 100% offline. When you get 30s of "E" data, it syncs instantly. This is 10x magic.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-400 text-2xl mr-3">✓</span>
+                                <div>
+                                    <h4 class="font-bold text-white">WisdomAI (Pidgin Voice)</h4>
+                                    <p class="text-gray-300">"WisdomAl, how many Super Pack I get?" Our AI agent is the UX. No learning curve.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-400 text-2xl mr-3">✓</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Mobile-First, Offline-First</h4>
+                                    <p class="text-gray-300">Built for the Tecno phone in a trader's hand. It's fast, resilient, and always on.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: The Human Moat -->
+        <section class="py-16 sm:py-24 bg-opacity-50" style="background-color: rgba(255, 255, 255, 0.02);">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                            Our <span class="text-gradient">Unbeatable "Human Moat"</span>
+                        </h2>
+                        <p class="mt-4 text-lg text-gray-300">
+                            Our competitors have "partners" in VI. We are building a grassroots human network: The <span class="font-bold text-white">"Wechage" (Wechnology Agents)</span>.
+                        </p>
+                        <p class="mt-4 text-gray-300">
+                            This is our on-the-ground sales, onboarding, and support army, just like OPay and MTN. They are paid to hunt, retain, and listen. This creates a 33:1 LTV:CAC ratio.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 lg:mt-0">
+                        <div class="fomo-stat">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-label">Activation (₦9k)</div>
+                        </div>
+                        <div class="fomo-stat">
+                            <div class="stat-number">10%</div>
+                            <div class="stat-label">Renewal (₦3k)</div>
+                        </div>
+                        <div class="fomo-stat sm:col-span-2">
+                            <div class="stat-number gradient">33 : 1</div>
+                            <div class="stat-label">LTV to CAC Ratio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Ask (Climax) -->
+        <section id="the-ask" class="py-16 sm:py-24 lg:py-32">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                    We Have The Pipeline. <span class="text-gradient">We Need The Fuel.</span>
+                </h2>
+                
+                <!-- Traction Stats -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-4xl mx-auto">
+                    <div class="fomo-stat">
+                        <div class="stat-number">150,000+</div>
+                        <div class="stat-label">Businesses in LOI Pipeline</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number">5,000</div>
+                        <div class="stat-label">Target Paying Customers</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number">₦30M</div>
+                        <div class="stat-label">Target MRR (by Month 7)</div>
+                    </div>
+                </div>
+
+                <!-- THE ASK -->
+                <div class="max-w-2xl mx-auto mt-12 sm:mt-16">
+                    <div class="ask-card p-6 sm:p-10">
+                        <h3 class="text-xl sm:text-2xl font-bold uppercase tracking-widest" style="color: var(--color-green);">
+                            The Pre-Seed Ask
+                        </h3>
+                        <div class="my-4">
+                            <!-- This is the N131.9M number from the PDF -->
+                            <span class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tighter">₦131,908,800</span>
+                        </div>
+                        <p class="text-lg text-gray-200">
+                            For a 7-month runway to build our team, activate the Wechage network, and secure our first 5,000 paying customers.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 sm:mt-16">
+                    <a href="#" class="fomo-button text-base sm:text-lg py-4 px-8">
+                        Don't Miss This. Request The Full Pitch Deck.
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t" style="border-color: rgba(255, 255, 255, 0.1);">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">
+                &copy; 2025 Wechnology. We Are Technology.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
