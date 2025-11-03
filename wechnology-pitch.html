@@ -50,6 +50,7 @@
             border-radius: 0.75rem;
             padding: 1.5rem;
             text-align: center;
+            height: 100%; /* Make cards in a grid equal height */
         }
         
         .fomo-stat .stat-number {
@@ -86,12 +87,14 @@
             font-size: 0.875rem;
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
-            color: white;
+            color: white !important; /* Ensure text is white */
             background: linear-gradient(90deg, var(--color-blue), var(--color-green));
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 168, 89, 0.2), 0 2px 5px rgba(15, 49, 173, 0.3);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
         }
 
         .fomo-button:hover {
@@ -148,6 +151,134 @@
             .fomo-stat .stat-number.gradient {
                 font-size: 3.25rem; /* 52px */
             }
+        }
+
+        /* AI CHAT STYLES (Adapted for Dark Mode) */
+        #ai-chat-section {
+            background-color: #050a1a;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        #chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.2); /* Darker container */
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 70vh; /* Set a fixed height */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #chat-header {
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        #chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .message {
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            max-width: 80%;
+            line-height: 1.5;
+        }
+
+        .user-message {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f0f4f8;
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+        }
+
+        .ai-message {
+            background-color: #1a2c5e; /* AI messages in brand blue */
+            color: #e0e8f9;
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        #input-area {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            gap: 0.5rem;
+        }
+
+        #demoLanguage {
+            flex-grow: 1;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        #demoLanguage option {
+            background-color: #050a1a;
+            color: white;
+        }
+
+        #runDemoBtn {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        #ai-name-modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        #modal-content {
+            background-color: #0c1a3e;
+            border: 1px solid var(--color-blue);
+            color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        #ai-name-input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-blue);
+            background-color: #050a1a;
+            color: white;
+        }
+
+        #set-name-btn {
+            width: 100%;
         }
     </style>
 </head>
@@ -363,8 +494,45 @@
             </div>
         </section>
 
+        <!-- NEW SECTION: The Team -->
+        <section class="py-16 sm:py-24 lg:py-32">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                    The <span class="text-gradient">Elite Team</span> We're Assembling
+                </h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
+                    Investors bet on teams. This is the 15-person specialized team our ₦131.9M pre-seed round will fund.
+                </p>
+                
+                <!-- Team Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 max-w-6xl mx-auto">
+                    <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl" style="color: var(--color-blue);">4</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">Leadership & Product</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">CEO (Vision), CTO (Architecture), Lead PM (UX), and UI/UX Designer.</p>
+                    </div>
+                    <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl" style="color: var(--color-green);">6</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">Core Engineering</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">4x Fullstack Developers and 2x DevOps/Infrastructure Engineers to build and scale.</p>
+                    </div>
+                    <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl">6</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">AI & Data</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">1x AI Lead, 2x ML Engineers (N-ATLaS/Whisper), and 3x Annotators (Pidgin dataset).</p>
+                    </div>
+                    <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl">8</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">GTM & Support</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">CMO, CCO (Head of Wechage), Content Creators, and Agent Support Specialists.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <!-- Section 5: The Ask (Climax) -->
-        <section id="the-ask" class="py-16 sm:py-24 lg:py-32">
+        <section id="the-ask" class="py-16 sm:py-24 lg:py-32" style="background-color: rgba(255, 255, 255, 0.02);">
             <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
                     We Have The Pipeline. <span class="text-gradient">We Need The Fuel.</span>
@@ -401,14 +569,98 @@
                         </p>
                     </div>
                 </div>
+
+                <!-- Use of Funds -->
+                <div class="max-w-4xl mx-auto mt-12 sm:mt-16">
+                    <h3 class="text-2xl sm:text-3xl lg:text-4xl tracking-tighter text-center">
+                        How We'll Deploy The Fuel (7-Month Runway)
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
+                        <div class="fomo-stat text-left p-5">
+                            <div class="stat-number text-3xl sm:text-4xl" style="color: var(--color-blue);">₦73.3M</div>
+                            <div class="stat-label mt-2 text-sm">Product & Team Development</div>
+                            <p class="text-gray-300 text-sm mt-2">Hire the core dev, AI, support, and marketing team.</p>
+                        </div>
+                        <div class="fomo-stat text-left p-5">
+                            <div class="stat-number text-3xl sm:text-4xl" style="color: var(--color-green);">₦26.6M</div>
+                            <div class="stat-label mt-2 text-sm">AI & Cloud Infrastructure</div>
+                            <p class="text-gray-300 text-sm mt-2">Secure RunPod GPUs, Hetzner servers, and sync engines.</p>
+                        </div>
+                        <div class="fomo-stat text-left p-5">
+                            <div class="stat-number text-3xl sm:text-4xl">₦10.0M</div>
+                            <div class="stat-label mt-2 text-sm">Go-to-Market & Legal</div>
+                            <p class="text-gray-300 text-sm mt-2">Fund agent kits, radio jingles, and legal/setup costs.</p>
+                        </div>
+                        <div class="fomo-stat text-left p-5">
+                            <div class="stat-number text-3xl sm:text-4xl">₦22.0M</div>
+                            <div class="stat-label mt-2 text-sm">Contingency (20%)</div>
+                            <p class="text-gray-300 text-sm mt-2">Risk buffer for server spikes and agent acquisition.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Global Vision -->
+                <div class="max-w-4xl mx-auto mt-12 sm:mt-16 text-center">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                        Nigeria is the Beachhead. <span class="text-gradient">A Global Empire is the Goal.</span>
+                    </h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
+                        This ₦131.9M investment captures the ₦3.44T Nigerian market. The *real* opportunity is replicating this "Offline-First, AI, Human Moat" model across the globe.
+                    </p>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
+                        We will establish subsidiaries in Ghana, Kenya, Egypt, and beyond, capturing each nation's un-served MSME market. This strategy allows for <span class="font-bold text-white">multiple valuation inflations through future subsidiary IPOs</span>, providing unprecedented returns for our seed-stage investors.
+                    </p>
+                </div>
                 
                 <div class="mt-12 sm:mt-16">
-                    <a href="#" class="fomo-button text-base sm:text-lg py-4 px-8">
+                    <a href="mailto:info@wechnology.com" class="fomo-button text-base sm:text-lg py-4 px-8">
                         Don't Miss This. Request The Full Pitch Deck.
                     </a>
                 </div>
             </div>
         </section>
+
+        <!-- NEW AI CHAT SECTION -->
+        <section id="ai-chat-section">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                    See "<span id="demo-ai-name">WisdomAI</span>" in Action
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+                    This is a simulation of our Offline-First AI. Run the demo to see how a trader would interact with it in local languages.
+                </p>
+
+                <div id="chat-container" class="mt-12">
+                    <div id="chat-header">
+                        Chat with <span id="ai-name-header">...</span>
+                    </div>
+                    <div id="chat-messages">
+                        <!-- Messages will be added here -->
+                    </div>
+                    <div id="input-area">
+                        <select id="demoLanguage" class="text-black">
+                            <option value="pidgin">Run Pidgin Demo</option>
+                            <option value="english">Run English Demo</option>
+                            <option value="yoruba">Run Yoruba Demo</option>
+                            <option value="igbo">Run Igbo Demo</option>
+                            <option value="hausa">Run Hausa Demo</option>
+                        </select>
+                        <button id="runDemoBtn" class="fomo-button">Run Demo</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Name Modal -->
+        <div id="ai-name-modal">
+            <div id="modal-content">
+                <h2>Welcome to Wechnology!</h2>
+                <p class="mt-2 text-gray-300">What would you like to name your personal AI assistant?</p>
+                <input type="text" id="ai-name-input" placeholder="e.g., WisdomAI, MyAssistant" value="WisdomAI">
+                <button id="set-name-btn" class="fomo-button">Set Name & Start</button>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->
@@ -420,5 +672,135 @@
         </div>
     </footer>
 
+
+    <!-- AI CHAT JAVASCRIPT -->
+    <script>
+        // AI Chat Demo Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const aiNameModal = document.getElementById('ai-name-modal');
+            const aiNameInput = document.getElementById('ai-name-input');
+            const setNameBtn = document.getElementById('set-name-btn');
+            const aiNameHeader = document.getElementById('ai-name-header');
+            const demoAiName = document.getElementById('demo-ai-name');
+            const chatMessages = document.getElementById('chat-messages');
+            const runDemoBtn = document.getElementById('runDemoBtn');
+            const demoLanguageSelect = document.getElementById('demoLanguage');
+
+            let aiName = "WisdomAI"; // Default
+            let demoRunning = false;
+
+            // --- Demo Conversations ---
+            const conversations = {
+                pidgin: [
+                    { type: 'user', text: 'WisdomAI, how many Super Pack I get for store?' },
+                    { type: 'ai', text: 'Oga, you get 14 cartons and 3 loose pieces.' },
+                    { type: 'user', text: 'Who be my biggest debtor?' },
+                    { type: 'ai', text: 'Na Oga Chinedu. E dey owe ₦15,500 since last week Tuesday.' },
+                    { type: 'user', text: 'Abeg, send am message for WhatsApp.' },
+                    { type: 'ai', 'text': 'Okay, I don queue the message. As soon as internet show, e go send.' }
+                ],
+                english: [
+                    { type: 'user', text: 'Hello, can you summarize my sales for last week?' },
+                    { type: 'ai', text: 'Certainly. Last week you made ₦185,200 in total sales. Your best-selling item was "Indomie Super Pack" with 45 units sold.' },
+                    { type: 'user', text: 'What is my current stock level for Coke PET bottles?' },
+                    { type: 'ai', text: 'You currently have 3 crates and 8 individual bottles of "Coke (PET bottle)" in stock.' },
+                    { type: 'user', text: 'Great, thank you.' },
+                    { type: 'ai', text: 'You\'re welcome! Is there anything else I can help with?' }
+                ],
+                yoruba: [
+                    { type: 'user', text: 'Ẹ kaalẹ, Wisdom. Elo ni iye iresi ti mo ni ninu ile itaja?' },
+                    { type: 'ai', text: 'Oga, ẹ ni apo iresi mẹfa (6) ati idaji (1/2) apo kan.' },
+                    { type: 'user', text: 'Ta ni o jẹ mi lowo ju?' },
+                    { type: 'ai', text: 'Arabinrin Funke ni. O jẹ yin ni ₦8,000. O ti to ọjọ mẹta.' },
+                    { type: 'user', text: 'Ṣe o le ran mi leti lati pe e ni ọla?' },
+                    { type: 'ai', text: 'Mo ti ṣeto olurannileti fun ọla ni 10 AM. O seun.' }
+                ],
+                igbo: [
+                    { type: 'user', text: 'WisdomAI, kedu maka ahịa m taa?' },
+                    { type: 'ai', text: 'Nnaa, I rere ihe ruru ₦45,000 taa. Ihe ị kacha ree bụ "Peak Milk".' },
+                    { type: 'user', text: 'Biko, lee ole "Indomie" fọdụrụ.' },
+                    { type: 'ai', text: 'Ị nwere katọn 12 na iberibe 5 fọdụrụ.' },
+                    { type: 'user', text: 'Daalụ.' },
+                    { type: 'ai', text: 'Nnoo. Kedu ihe ọzọ m nwere ike ime nye gị?' }
+                ],
+                hausa: [
+                    { type: 'user', text: 'Sannu, Wisdom. Nawa ne kudin da ake bina a waje?' },
+                    { type: 'ai', text: 'Ranka ya dade, ana bin ka ₦52,000 gaba daya. Alhaji Musa ne ke da babban bashi na ₦20,000.' },
+                    { type: 'user', text: 'Yaya tallace-tallace na wannan makon?' },
+                    { type: 'ai', text: 'Tallace-tallacen wannan makon sun kai ₦120,000. Kun fi siyar da shinkafa da sukari.' },
+                    { type: 'user', text: 'Na gode.' },
+                    { type: 'ai', text: 'Barka dai. Ina nan don taimakawa.' }
+                ]
+            };
+
+            // --- Functions ---
+            function init() {
+                aiNameModal.style.display = 'block'; // Show modal on load
+            }
+
+            function setAIName() {
+                const name = aiNameInput.value.trim();
+                if (name) {
+                    aiName = name;
+                    aiNameHeader.innerText = name;
+                    demoAiName.innerText = name; // Update heading
+                    aiNameModal.style.display = 'none';
+                    addMessage('ai', `Hello! I'm ${aiName}, your offline-first AI assistant. Run a demo to see how I work!`);
+                }
+            }
+
+            function addMessage(type, text) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', type === 'user' ? 'user-message' : 'ai-message');
+                messageElement.innerText = text;
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+            }
+
+            function runDemo() {
+                if (demoRunning) return; // Prevent multiple demos at once
+                demoRunning = true;
+                runDemoBtn.disabled = true;
+                runDemoBtn.innerText = 'Running...';
+                
+                const lang = demoLanguageSelect.value;
+                const conversation = conversations[lang];
+                
+                chatMessages.innerHTML = ''; // Clear chat
+                addMessage('ai', `Running ${lang} demo...`);
+
+                let delay = 1500; // Start delay
+
+                conversation.forEach((message, index) => {
+                    setTimeout(() => {
+                        addMessage(message.type, message.text);
+                        
+                        // If this is the last message, re-enable the button
+                        if (index === conversation.length - 1) {
+                            demoRunning = false;
+                            runDemoBtn.disabled = false;
+                            runDemoBtn.innerText = 'Run Demo';
+                        }
+                    }, delay);
+                    delay += (message.type === 'user' ? 1500 : 2500); // User messages faster, AI slower
+                });
+            }
+
+            // --- Event Listeners ---
+            setNameBtn.addEventListener('click', setAIName);
+            aiNameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    setAIName();
+                }
+            });
+            runDemoBtn.addEventListener('click', runDemo);
+
+            // Start the process
+            init();
+        });
+
+    </script>
+
 </body>
 </html>
+
