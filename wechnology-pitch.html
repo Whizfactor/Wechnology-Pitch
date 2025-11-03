@@ -1,806 +1,779 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wechnology: The OS for Africa's 39.6M MSMEs</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Google Fonts: Raleway (Headings) and Inter (Body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wechnology: The OS for Africa's 39.6M MSMEs</title>
+       <script src="https://cdn.tailwindcss.com"></script>
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
 
-    <!-- Favicon (SVG approximation of the 'W' logo) -->
-    <link rel="icon" type="image/x-icon" href="Wechnology-W-(white bg).png">
+       <link rel="icon" type="image/x-icon" href="Wechnology-W-(white bg).png">
 
-    <style>
-        /* Define Brand Colors & Fonts */
-        :root {
-            --color-blue: #0f31ad;
-            --color-green: #00a859;
-            --color-black: #000000;
-        }
+    <style>
+        /* Define Brand Colors & Fonts */
+        :root {
+            --color-blue: #0f31ad;
+            --color-green: #00a859;
+            --color-black: #000000;
+        }
 
-        /* Apply custom fonts via Tailwind */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050a1a; /* A very dark, premium blue-black */
-            color: #f0f4f8;
-        }
+        /* Apply custom fonts via Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050a1a; /* A very dark, premium blue-black */
+            color: #f0f4f8;
+        }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 800;
-        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
 
-        /* The FOMO Gradient Text */
-        .text-gradient {
-            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
+        /* The FOMO Gradient Text */
+        .text-gradient {
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
 
-        /* The "Scary to Miss" Stat Block */
-        .fomo-stat {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            text-align: center;
-            height: 100%; /* Make cards in a grid equal height */
-        }
-        
-        .fomo-stat .stat-number {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 800;
-            font-size: 2.5rem; /* 40px */
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: white;
-        }
-        
-        .fomo-stat .stat-number.gradient {
-            background: linear-gradient(90deg, #d0e, #0f31ad, #00a859);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            font-size: 2.75rem; /* Slightly larger for emphasis */
-        }
+        /* The "Scary to Miss" Stat Block */
+        .fomo-stat {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            height: 100%; /* Make cards in a grid equal height */
+        }
+        
+        .fomo-stat .stat-number {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem; /* 40px */
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: white;
+        }
+        
+        .fomo-stat .stat-number.gradient {
+            background: linear-gradient(90deg, #d0e, #0f31ad, #00a859);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-size: 2.75rem; /* Slightly larger for emphasis */
+        }
 
-        .fomo-stat .stat-label {
-            font-size: 0.875rem; /* 14px */
-            color: #94a3b8; /* Cool gray */
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        .fomo-stat .stat-label {
+            font-size: 0.875rem; /* 14px */
+            color: #94a3b8; /* Cool gray */
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
 
-        /* The "FOMO Active" CTA Button */
-        .fomo-button {
-            display: inline-block;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            font-size: 0.875rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            color: white !important; /* Ensure text is white */
-            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 168, 89, 0.2), 0 2px 5px rgba(15, 49, 173, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: none;
-            cursor: pointer;
-        }
+        /* The "FOMO Active" CTA Button */
+        .fomo-button {
+            display: inline-block;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white !important; /* Ensure text is white */
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 168, 89, 0.2), 0 2px 5px rgba(15, 49, 173, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+        }
 
-        .fomo-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 168, 89, 0.3), 0 4px 10px rgba(15, 49, 173, 0.4);
-        }
+        .fomo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 168, 89, 0.3), 0 4px 10px rgba(15, 49, 173, 0.4);
+        }
 
-        /* The "Ask" Card - designed to be the focal point */
-        .ask-card {
-            background: linear-gradient(145deg, rgba(15, 49, 173, 0.2), rgba(0, 168, 89, 0.1));
-            border: 1px solid var(--color-green);
-            border-radius: 1rem;
-            box-shadow: 0 10px 40px rgba(0, 168, 89, 0.3), 0 0 15px rgba(15, 49, 173, 0.5);
-            /* A subtle glow */
-            animation: pulse-glow 3s infinite alternate;
-        }
-        
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 10px 40px rgba(0, 168, 89, 0.2), 0 0 10px rgba(15, 49, 173, 0.3);
-            }
-            100% {
-                box-shadow: 0 10px 50px rgba(0, 168, 89, 0.4), 0 0 20px rgba(15, 49, 173, 0.6);
-            }
-        }
+        /* The "Ask" Card - designed to be the focal point */
+        .ask-card {
+            background: linear-gradient(145deg, rgba(15, 49, 173, 0.2), rgba(0, 168, 89, 0.1));
+            border: 1px solid var(--color-green);
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 168, 89, 0.3), 0 0 15px rgba(15, 49, 173, 0.5);
+            /* A subtle glow */
+            animation: pulse-glow 3s infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 10px 40px rgba(0, 168, 89, 0.2), 0 0 10px rgba(15, 49, 173, 0.3);
+            }
+            100% {
+                box-shadow: 0 10px 50px rgba(0, 168, 89, 0.4), 0 0 20px rgba(15, 49, 173, 0.6);
+            }
+        }
 
-        /* Responsive font sizes for headings */
-        h1 {
-            font-size: 2.25rem; /* 36px */
-            line-height: 1.2;
-        }
-        h2 {
-            font-size: 1.875rem; /* 30px */
-            line-height: 1.2;
-        }
-        @media (min-width: 640px) {
-            h1 {
-                font-size: 3rem; /* 48px */
-            }
-            h2 {
-                font-size: 2.25rem; /* 36px */
-            }
-        }
-        @media (min-width: 1024px) {
-            h1 {
-                font-size: 3.75rem; /* 60px */
-            }
-            h2 {
-                font-size: 3rem; /* 48px */
-            }
-            .fomo-stat .stat-number {
-                font-size: 3rem; /* 48px */
-            }
-            .fomo-stat .stat-number.gradient {
-                font-size: 3.25rem; /* 52px */
-            }
-        }
+        /* Responsive font sizes for headings */
+        h1 {
+            font-size: 2.25rem; /* 36px */
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 1.875rem; /* 30px */
+            line-height: 1.2;
+        }
+        @media (min-width: 640px) {
+            h1 {
+                font-size: 3rem; /* 48px */
+            }
+            h2 {
+                font-size: 2.25rem; /* 36px */
+            }
+        }
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 3.75rem; /* 60px */
+            }
+            h2 {
+                font-size: 3rem; /* 48px */
+            }
+            .fomo-stat .stat-number {
+                font-size: 3rem; /* 48px */
+            }
+            .fomo-stat .stat-number.gradient {
+                font-size: 3.25rem; /* 52px */
+            }
+        }
 
-        /* AI CHAT STYLES (Adapted for Dark Mode) */
-        #ai-chat-section {
-            background-color: #050a1a;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
+        /* AI CHAT STYLES (Adapted for Dark Mode) */
+        #ai-chat-section {
+            background-color: #050a1a;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
 
-        #chat-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: rgba(0, 0, 0, 0.2); /* Darker container */
-            border-radius: 1rem;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 70vh; /* Set a fixed height */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        #chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.2); /* Darker container */
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 70vh; /* Set a fixed height */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-        #chat-header {
-            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
+        #chat-header {
+            background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
 
-        #chat-messages {
-            flex-grow: 1;
-            padding: 1rem;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
+        #chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
 
-        .message {
-            padding: 0.75rem 1rem;
-            border-radius: 0.75rem;
-            max-width: 80%;
-            line-height: 1.5;
-        }
+        .message {
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            max-width: 80%;
+            line-height: 1.5;
+        }
 
-        .user-message {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #f0f4f8;
-            align-self: flex-end;
-            border-bottom-right-radius: 0.25rem;
-        }
+        .user-message {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f0f4f8;
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+        }
 
-        .ai-message {
-            background-color: #1a2c5e; /* AI messages in brand blue */
-            color: #e0e8f9;
-            align-self: flex-start;
-            border-bottom-left-radius: 0.25rem;
-        }
+        .ai-message {
+            background-color: #1a2c5e; /* AI messages in brand blue */
+            color: #e0e8f9;
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+        }
 
-        #input-area {
-            display: flex;
-            padding: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: rgba(255, 255, 255, 0.05);
-            gap: 0.5rem;
-        }
+        #input-area {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            gap: 0.5rem;
+        }
 
-        #demoLanguage {
-            flex-grow: 1;
-            padding: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-family: 'Inter', sans-serif;
-        }
-        #demoLanguage option {
-            background-color: #050a1a;
-            color: white;
-        }
+        #demoLanguage {
+            flex-grow: 1;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        #demoLanguage option {
+            background-color: #050a1a;
+            color: white;
+        }
 
-        #runDemoBtn {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-            font-size: 0.875rem;
-        }
+        #runDemoBtn {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            font-size: 0.875rem;
+        }
 
-        #ai-name-modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-        }
+        #ai-name-modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
 
-        #modal-content {
-            background-color: #0c1a3e;
-            border: 1px solid var(--color-blue);
-            color: white;
-            margin: 15% auto;
-            padding: 2rem;
-            border-radius: 1rem;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-        }
-        
-        #ai-name-input {
-            width: 100%;
-            padding: 0.75rem;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--color-blue);
-            background-color: #050a1a;
-            color: white;
-        }
+        #modal-content {
+            background-color: #0c1a3e;
+            border: 1px solid var(--color-blue);
+            color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        #ai-name-input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-blue);
+            background-color: #050a1a;
+            color: white;
+        }
 
-        #set-name-btn {
-            width: 100%;
-        }
-    </style>
+        #set-name-btn {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body class="antialiased">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-opacity-90 backdrop-blur-md" style="background-color: #050a1a;">
-        <nav class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-            <img 
-                src="Wechnology-W-(black bg).png" 
-                alt="Wechnology Logo: We Are Technology" 
-                class="w-16 md:w-24 mr-3" 
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-            />
-            <!-- Fallback text logo (hidden by default if image loads) -->
-            <div class="hidden">
-                <h1 class="text-3xl font-extrabold text-brand-blue">WECHNOLOGY</h1>
-            </div>
-                <!-- CTA -->
-                <a href="#the-ask" class="fomo-button">
-                    <span class="hidden sm:inline">The ₦131.9M Ask</span>
-                    <span class="sm:hidden">The Ask</span>
-                </a>
-            </div>
-        </nav>
-    </header>
+       <header class="sticky top-0 z-50 bg-opacity-90 backdrop-blur-md" style="background-color: #050a1a;">
+        <nav class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                           <img 
+                src="Wechnology-W-(black bg).png" 
+                alt="Wechnology Logo: We Are Technology" 
+                class="w-16 md:w-24 mr-3" 
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+                       <div class="hidden">
+                <h1 class="text-3xl font-extrabold text-brand-blue">WECHNOLOGY</h1>
+            </div>
+                               <a href="#the-ask" class="fomo-button">
+                    <span class="hidden sm:inline">The &#8358;131.9M Ask</span>
+                    <span class="sm:hidden">The Ask</span>
+                </a>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Main Content -->
-    <main>
+       <main>
 
-        <!-- Section 1: Hero -->
-        <section class="py-16 sm:py-24 lg:py-32">
-            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter">
-                    The "Infrastructure Tax" is <span class="text-gradient">Killing 99%</span> of Businesses.
-                </h1>
-                <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-gray-300">
-                    We're building the Offline-First, AI-Powered Operating System for 
-                    <span class="font-bold text-white">Africa's 39.6 Million MSMEs</span>
-                    who run on paper, generators, and unstable data.
-                </p>
-                
-                <!-- FOMO Stats Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-4xl mx-auto">
-                    <div class="fomo-stat">
-                        <div class="stat-number">39.6M</div>
-                        <div class="stat-label">Nigerian MSMEs</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="stat-number gradient">₦3.44T</div>
-                        <div class="stat-label">Serviceable Market (SAM)</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Operate Manually</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+               <section class="py-16 sm:py-24 lg:py-32">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter">
+                    The "Infrastructure Tax" is <span class="text-gradient">Killing 99%</span> of Businesses.
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-gray-300">
+                    We're building the Offline-First, AI-Powered Operating System for 
+                    <span class="font-bold text-white">Africa's 39.6 Million MSMEs</span>
+                    who run on paper, generators, and unstable data.
+                </p>
+                
+                               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-4xl mx-auto">
+                    <div class="fomo-stat">
+                        <div class="stat-number">39.6M</div>
+                        <div class="stat-label">Nigerian MSMEs</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number gradient">&#8358;3.44T</div>
+                        <div class="stat-label">Serviceable Market (SAM)</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Operate Manually</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Section 2: The Problem -->
-        <section class="py-16 sm:py-24 bg-opacity-50" style="background-color: rgba(255, 255, 255, 0.02);">
-            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
-                        Why Every Other Tool Fails
-                    </h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-                        Cloud-only, complex, USD-priced software doesn't work in Nigeria. The market is defined by three realities:
-                    </p>
-                </div>
-                
-                <!-- Problem Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12">
-                    <!-- Card 1: NO LIGHT -->
-                    <div class="fomo-stat text-left p-6">
-                        <span class="text-3xl">🚫</span>
-                        <h3 class="text-xl font-bold mt-4">NO LIGHT</h3>
-                        <p class="text-gray-300 mt-2">
-                            92 million Nigerians lack reliable electricity. Software that requires a constant connection to a desktop is dead on arrival.
-                        </p>
-                    </div>
-                    <!-- Card 2: NO INTERNET -->
-                    <div class="fomo-stat text-left p-6">
-                        <span class="text-3xl">📉</span>
-                        <h3 class="text-xl font-bold mt-4">NO INTERNET</h3>
-                        <p class="text-gray-300 mt-2">
-                            Unstable, expensive, and slow mobile data means "cloud-only" SaaS tools are frustrating, data-draining, and unreliable.
-                        </p>
-                    </div>
-                    <!-- Card 3: TOO HARD -->
-                    <div class="fomo-stat text-left p-6">
-                        <span class="text-3xl">🤯</span>
-                        <h3 class="text-xl font-bold mt-4">TOO HARD</h3>
-                        <p class="text-gray-300 mt-2">
-                            Complex, text-based UX built for Western accountants (like Tally) creates a massive learning curve. This is a barrier, not a tool.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+               <section class="py-16 sm:py-24 bg-opacity-50" style="background-color: rgba(255, 255, 255, 0.02);">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                        Why Every Other Tool Fails
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+                        Cloud-only, complex, USD-priced software doesn't work in Nigeria. The market is defined by three realities:
+                    </p>
+                </div>
+                
+                               <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12">
+                                       <div class="fomo-stat text-left p-6">
+                        <span class="text-3xl">&#128683;</span>
+                        <h3 class="text-xl font-bold mt-4">NO LIGHT</h3>
+                        <p class="text-gray-300 mt-2">
+                            92 million Nigerians lack reliable electricity. Software that requires a constant connection to a desktop is dead on arrival.
+                        </p>
+                    </div>
+                                       <div class="fomo-stat text-left p-6">
+                        <span class="text-3xl">&#128201;</span>
+                        <h3 class="text-xl font-bold mt-4">NO INTERNET</h3>
+                        <p class="text-gray-300 mt-2">
+                            Unstable, expensive, and slow mobile data means "cloud-only" SaaS tools are frustrating, data-draining, and unreliable.
+                        </p>
+                    </div>
+                                       <div class="fomo-stat text-left p-6">
+                        <span class="text-3xl">&#129327;</span>
+                        <h3 class="text-xl font-bold mt-4">TOO HARD</h3>
+                        <p class="text-gray-300 mt-2">
+                            Complex, text-based UX built for Western accountants (like Tally) creates a massive learning curve. This is a barrier, not a tool.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Section 3: The "Magic" Solution -->
-        <section class="py-16 sm:py-24 lg:py-32">
-            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
-                        Our Solution: <span class="text-gradient">Offline-First "Magic"</span>
-                    </h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-                        We win by building for the real world, not the ideal one. We beat Tally and the cloud giants on Day 1.
-                    </p>
-                </div>
+               <section class="py-16 sm:py-24 lg:py-32">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                        Our Solution: <span class="text-gradient">Offline-First "Magic"</span>
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+                        We win by building for the real world, not the ideal one. We beat Tally and the cloud giants on Day 1.
+                    </p>
+                </div>
 
-                <!-- Comparison -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 items-stretch">
-                    
-                    <!-- The "Old Way" -->
-                    <div class="fomo-stat p-6 sm:p-8 text-left border-red-500/30">
-                        <h3 class="text-2xl font-bold text-red-400">The "Old Way" (Tally & SaaS)</h3>
-                        <p class="text-gray-400 mt-2">The competition's fatal flaws.</p>
-                        <ul class="mt-6 space-y-4">
-                            <li class="flex items-start">
-                                <span class="text-red-400 text-2xl mr-3">✕</span>
-                                <div>
-                                    <h4 class="font-bold text-white">Clunky, Batch Sync</h4>
-                                    <p class="text-gray-400">Their "cloud" is a slow, manual add-on, not a real-time feature. It's unusable.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-red-400 text-2xl mr-3">✕</span>
-                                <div>
-                                    <h4 class="font-bold text-white">"Accountant-First" UX</h4>
-                                    <p class="text-gray-400">Dated, text-based UI that requires a paid "Tally operator" to even use.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-red-400 text-2xl mr-3">✕</span>
-                                <div>
-                                    <h4 class="font-bold text-white">Dies Offline</h4>
-                                    <p class="text-gray-400">No internet? No power? Your business is closed. The software fails when you need it most.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 items-stretch">
+                    
+                                       <div class="fomo-stat p-6 sm:p-8 text-left border-red-500/30">
+                        <h3 class="text-2xl font-bold text-red-400">The "Old Way" (Tally & SaaS)</h3>
+                        <p class="text-gray-400 mt-2">The competition's fatal flaws.</p>
+                        <ul class="mt-6 space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-red-400 text-2xl mr-3">&#10005;</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Clunky, Batch Sync</h4>
+                                    <p class="text-gray-400">Their "cloud" is a slow, manual add-on, not a real-time feature. It's unusable.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-400 text-2xl mr-3">&#10005;</span>
+                                <div>
+                                    <h4 class="font-bold text-white">"Accountant-First" UX</h4>
+                                    <p class="text-gray-400">Dated, text-based UI that requires a paid "Tally operator" to even use.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-400 text-2xl mr-3">&#10005;</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Dies Offline</h4>
+                                    <p class="text-gray-400">No internet? No power? Your business is closed. The software fails when you need it most.</p>
+                                </div>
+                            </li>
+ content:                        </ul>
+                    </div>
 
-                    <!-- The "Wechnology Way" -->
-                    <div class="fomo-stat p-6 sm:p-8 text-left border-green-500/30">
-                        <h3 class="text-2xl font-bold text-green-400">The "Wechnology" Magic</h3>
-                        <p class="text-gray-300 mt-2">Our unbeatable advantages.</p>
-                        <ul class="mt-6 space-y-4">
-                            <li class="flex items-start">
-                                <span class="text-green-400 text-2xl mr-3">✓</span>
-                                <div>
-                                    <h4 class="font-bold text-white">Seamless Auto-Sync</h4>
-                                    <p class="text-gray-300">"It just works." Run your business 100% offline. When you get 30s of "E" data, it syncs instantly. This is 10x magic.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-green-400 text-2xl mr-3">✓</span>
-                                <div>
-                                    <h4 class="font-bold text-white">WisdomAI (Pidgin Voice)</h4>
-                                    <p class="text-gray-300">"WisdomAl, how many Super Pack I get?" Our AI agent is the UX. No learning curve.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-green-400 text-2xl mr-3">✓</span>
-                                <div>
-                                    <h4 class="font-bold text-white">Mobile-First, Offline-First</h4>
-                                    <p class="text-gray-300">Built for the Tecno phone in a trader's hand. It's fast, resilient, and always on.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+                                       <div class="fomo-stat p-6 sm:p-8 text-left border-green-500/30">
+                        <h3 class="text-2xl font-bold text-green-400">The "Wechnology" Magic</h3>
+                        <p class="text-gray-300 mt-2">Our unbeatable advantages.</p>
+                        <ul class="mt-6 space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-green-400 text-2xl mr-3">&#10003;</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Seamless Auto-Sync</h4>
+                                    <p class="text-gray-300">"It just works." Run your business 100% offline. When you get 30s of "E" data, it syncs instantly. This is 10x magic.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-400 text-2xl mr-3">&#10003;</span>
+                                <div>
+                                    <h4 class="font-bold text-white">WisdomAI (Pidgin Voice)</h4>
+                                    <p class="text-gray-300">"WisdomAl, how many Super Pack I get?" Our AI agent is the UX. No learning curve.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-400 text-2xl mr-3">&#10003;</span>
+                                <div>
+                                    <h4 class="font-bold text-white">Mobile-First, Offline-First</h4>
+                                    <p class="text-gray-300">Built for the Tecno phone in a trader's hand. It's fast, resilient, and always on.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Section 4: The Human Moat -->
-        <section class="py-16 sm:py-24 bg-opacity-50" style="background-color: rgba(255, 255, 255, 0.02);">
-            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
-                    <div>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
-                            Our <span class="text-gradient">Unbeatable "Human Moat"</span>
-                        </h2>
-                        <p class="mt-4 text-lg text-gray-300">
-                            Our competitors have "partners" in VI. We are building a grassroots human network: The <span class="font-bold text-white">"Wechage" (Wechnology Agents)</span>.
-                        </p>
-                        <p class="mt-4 text-gray-300">
-                            This is our on-the-ground sales, onboarding, and support army, just like OPay and MTN. They are paid to hunt, retain, and listen. This creates a 33:1 LTV:CAC ratio.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 lg:mt-0">
-                        <div class="fomo-stat">
-                            <div class="stat-number">30%</div>
-                            <div class="stat-label">Activation (₦9k)</div>
-                        </div>
-                        <div class="fomo-stat">
-                            <div class="stat-number">10%</div>
-                            <div class="stat-label">Renewal (₦3k)</div>
-                        </div>
-                        <div class="fomo-stat sm:col-span-2">
-                            <div class="stat-number gradient">33 : 1</div>
-                            <div class="stat-label">LTV to CAC Ratio</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+               <section class="py-16 sm:py-24 bg-opacity-50" style="background-color: rgba(255, 255, 255, 0.02);">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                            Our <span class="text-gradient">Unbeatable "Human Moat"</span>
+                        </h2>
+                        <p class="mt-4 text-lg text-gray-300">
+                            Our competitors have "partners" in VI. We are building a grassroots human network: The <span class="font-bold text-white">"Wechage" (Wechnology Agents)</span>.
+           _request:                  </p>
+                        <p class="mt-4 text-gray-300">
+                            This is our on-the-ground sales, onboarding, and support army, just like OPay and MTN. They are paid to hunt, retain, and listen. This creates a 33:1 LTV:CAC ratio.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 lg:mt-0">
+               _model:          <div class="fomo-stat">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-label">Activation (&#8358;9k)</div>
+                        </div>
+                        <div class="fomo-stat">
+                            <div class="stat-number">10%</div>
+                            <div class="stat-label">Renewal (&#8358;3k)</div>
+                        </div>
+                        <div class="fomo-stat sm:col-span-2">
+                            <div class="stat-number gradient">33 : 1</div>
+                            <div class="stat-label">LTV to CAC Ratio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- NEW SECTION: The Team -->
-        <section class="py-16 sm:py-24 lg:py-32">
-            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
-                    The <span class="text-gradient">Elite Team</span> We're Assembling
-                </h2>
-                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
-                    Investors bet on teams. This is the 15-person specialized team our ₦131.9M pre-seed round will fund.
-                </p>
-                
-                <!-- Team Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 max-w-6xl mx-auto">
-                    <div class="fomo-stat text-left p-5">
-                        <div class="stat-number text-3xl" style="color: var(--color-blue);">5</div>
-                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">Leadership & Product</h3>
-                        <p class="text-gray-300 text-sm mt-2 text-left">CEO (Vision), CTO (Architecture), Lead PM (UX), and 2x UI/UX Designers.</p>
-                    </div>
-                    <div class="fomo-stat text-left p-5">
-                        <div class="stat-number text-3xl" style="color: var(--color-green);">6</div>
-                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">Core Engineering</h3>
-                        <p class="text-gray-300 text-sm mt-2 text-left">4x Fullstack Developers and 2x DevOps/Infrastructure Engineers to build and scale.</p>
-                    </div>
-                    <div class="fomo-stat text-left p-5">
-                        <div class="stat-number text-3xl" style="color: var(--color-blue);">8</div>
-                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">AI, Data & Security</h3>
-                        <p class="text-gray-300 text-sm mt-2 text-left">1x AI Lead, 2x ML Engineers (N-ATLaS/Whisper), 3x Annotators (Pidgin and Local language dataset) and 2x Cybersecurity Engineers.</p>
-                    </div>
-                    <div class="fomo-stat text-left p-5">
-                        <div class="stat-number text-3xl" style="color: var(--color-green);">10</div>
-                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">GTM & Support</h3>
-                        <p class="text-gray-300 text-sm mt-2 text-left">CMO, CCO (Head of Wechage), Content Creators, Social Media Managers and Agent Support Specialists.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+               <section class="py-16 sm:py-24 lg:py-32">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                    The <span class="text-gradient">Elite Team</span> We're Assembling
+                </h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
+                    Investors bet on teams. This is the 15-person specialized team our &#8358;131.9M pre-seed round will fund.
+                </p>
+                
+                               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 max-w-6xl mx-auto">
+                    <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl" style="color: var(--color-blue);">5</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">Leadership & Product</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">CEO (Vision), CTO (Architecture), Lead PM (UX), and 2x UI/UX Designers.</p>
+                    </div>
+     _request:              <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl" style="color: var(--color-green);">6</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">Core Engineering</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">4x Fullstack Developers and 2x DevOps/Infrastructure Engineers to build and scale.</p>
+                    </div>
+                    <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl" style="color: var(--color-blue);">8</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">AI, Data & Security</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">1x AI Lead, 2x ML Engineers (N-ATLaS/Whisper), 3x Annotators (Pidgin and Local language dataset) and 2x Cybersecurity Engineers.</p>
+                    </div>
+                    <div class="fomo-stat text-left p-5">
+                        <div class="stat-number text-3xl" style="color: var(--color-green);">10</div>
+                        <h3 class="stat-label mt-2 text-white font-bold text-base text-left">GTM & Support</h3>
+                        <p class="text-gray-300 text-sm mt-2 text-left">CMO, CCO (Head of Wechage), Content Creators, Social Media Managers and Agent Support Specialists.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
-        <!-- Section 5: The Ask (Climax) -->
-        <section id="the-ask" class="py-16 sm:py-24 lg:py-32" style="background-color: rgba(255, 255, 255, 0.02);">
-            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
-                    We Have The Pipeline. <span class="text-gradient">We Need The Fuel.</span>
-                </h2>
-                
-                <!-- Traction Stats -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-4xl mx-auto">
-                    <div class="fomo-stat">
-                        <div class="stat-number">150,000+</div>
-                        <div class="stat-label">Businesses in LOI Pipeline</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="stat-number">5,000</div>
-                        <div class="stat-label">Target Paying Customers</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="stat-number">₦30M</div>
-                        <div class="stat-label">Target MRR (by Month 7)</div>
-                    </div>
-                </div>
+               <section id="the-ask" class="py-16 sm:py-24 lg:py-32" style="background-color: rgba(255, 255, 255, 0.02);">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                    We Have The Pipeline. <span class="text-gradient">We Need The Fuel.</span>
+                </h2>
+                
+                               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 max-w-4xl mx-auto">
+                    <div class="fomo-stat">
+                        <div class="stat-number">150,000+</div>
+                        <div class="stat-label">Businesses in LOI Pipeline</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number">5,000</div>
+                        <div class="stat-label">Target Paying Customers</div>
+                    </div>
+                    <div class="fomo-stat">
+                        <div class="stat-number">&#8358;30M</div>
+                        <div class="stat-label">Target MRR (by Month 7)</div>
+                    </div>
+                </div>
 
-                <!-- THE ASK -->
-                <div class="max-w-2xl mx-auto mt-12 sm:mt-16">
-                    <div class="ask-card p-6 sm:p-10">
-                        <h3 class="text-xl sm:text-2xl font-bold uppercase tracking-widest" style="color: var(--color-green);">
-                            The Pre-Seed Ask
-                        </h3>
-                        <div class="my-4">
-                            <!-- This is the N131.9M number from the PDF -->
-                            <span class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tighter">₦131,908,800</span>
-                        </div>
-                        <p class="text-lg text-gray-200">
-                            For a 7-month runway to build our team, activate the Wechage network, and secure our first 5,000 paying customers.
-                        </p>
-                    </div>
-                </div>
+                               <div class="max-w-2xl mx-auto mt-12 sm:mt-16">
+                    <div class="ask-card p-6 sm:p-10">
+                        <h3 class="text-xl sm:text-2xl font-bold uppercase tracking-widest" style="color: var(--color-green);">
+                            The Pre-Seed Ask
+                        </h3>
+                        <div class="my-4">
+                                                       <span class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tighter">&#8358;131,908,800</span>
+                        </div>
+                        <p class="text-lg text-gray-200">
+                            For a 7-month runway to build our team, activate the Wechage network, and secure our first 5,000 paying customers.
+ ar                    </p>
+                    </div>
+                </div>
 
-                <!-- Use of Funds -->
-                <div class="max-w-4xl mx-auto mt-12 sm:mt-16">
-                    <h3 class="text-2xl sm:text-3xl lg:text-4xl tracking-tighter text-center">
-                        How We'll Deploy The Fuel (7-Month Runway)
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
-                        <div class="fomo-stat text-left p-5">
-                            <div class="stat-number text-3xl sm:text-4xl" style="color: var(--color-blue);">₦73.3M</div>
-                            <div class="stat-label mt-2 text-sm">Product & Team Development</div>
-                            <p class="text-gray-300 text-sm mt-2">Hire the core dev, AI, support, and marketing team.</p>
-                        </div>
-                        <div class="fomo-stat text-left p-5">
-                            <div class="stat-number text-3xl sm:text-4xl" style="color: var(--color-green);">₦26.6M</div>
-                            <div class="stat-label mt-2 text-sm">AI & Cloud Infrastructure</div>
-                            <p class="text-gray-300 text-sm mt-2">Secure RunPod GPUs, Hetzner servers, and sync engines.</p>
-                        </div>
-                        <div class="fomo-stat text-left p-5">
-                            <div class="stat-number text-3xl sm:text-4xl">₦10.0M</div>
-                            <div class="stat-label mt-2 text-sm">Go-to-Market & Legal</div>
-                            <p class="text-gray-300 text-sm mt-2">Fund agent kits, radio jingles, and legal/setup costs.</p>
-                        </div>
-                        <div class="fomo-stat text-left p-5">
-                            <div class="stat-number text-3xl sm:text-4xl">₦22.0M</div>
-                            <div class="stat-label mt-2 text-sm">Contingency (20%)</div>
-                            <p class="text-gray-300 text-sm mt-2">Risk buffer for server spikes and agent acquisition.</p>
-                        </div>
-                    </div>
-                </div>
+                               <div class="max-w-4xl mx-auto mt-12 sm:mt-16">
+                    <h3 class="text-2xl sm:text-3xl lg:text-4xl tracking-tighter text-center">
+                        How We'll Deploy The Fuel (7-Month Runway)
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
+                        <div class="fomo-stat text-left p-5">
+                            <div class="stat-number text-3xl sm:text-4xl" style="color: var(--color-blue);">&#8358;73.3M</div>
+                            <div class="stat-label mt-2 text-sm">Product & Team Development</div>
+                            <p class="text-gray-300 text-sm mt-2">Hire the core dev, AI, support, and marketing team.</p>
+                        </div>
+                        <div class="fomo-stat text-left p-5">
+                            <div class="stat-number text-3xl sm:text-4xl" style="color: var(--color-green);">&#8358;26.6M</div>
+                            <div class="stat-label mt-2 text-sm">AI & Cloud Infrastructure</div>
+                            <p class="text-gray-300 text-sm mt-2">Secure RunPod GPUs, Hetzner servers, and sync engines.</p>
+                        </div>
+                   _request:      <div class="fomo-stat text-left p-5">
+                            <div class="stat-number text-3xl sm:text-4xl">&#8358;10.0M</div>
+                            <div class="stat-label mt-2 text-sm">Go-to-Market & Legal</div>
+                            <p class="text-gray-300 text-sm mt-2">Fund agent kits, radio jingles, and legal/setup costs.</p>
+                        </div>
+                        <div class="fomo-stat text-left p-5">
+ A,                      <div class="stat-number text-3xl sm:text-4xl">&#8358;22.0M</div>
+                            <div class="stat-label mt-2 text-sm">Contingency (20%)</div>
+                            <p class="text-gray-300 text-sm mt-2">Risk buffer for server spikes and agent acquisition.</p>
+ A                    </div>
+                    </div>
+                </div>
 
-                <!-- Global Vision -->
-                <div class="max-w-4xl mx-auto mt-12 sm:mt-16 text-center">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
-                        Nigeria is the Beachhead. <span class="text-gradient">A Global Empire is the Goal.</span>
-                    </h2>
-                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
-                        This ₦131.9M investment captures the ₦3.44T Nigerian market. The <span class="font-extrabold">real</span> opportunity is replicating this "Offline-First, AI, Human Moat" model across the globe.
-                    </p>
-                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
-                        We will establish subsidiaries in Ghana, Kenya, Egypt, and beyond, capturing each nation's un-served MSME market. This strategy allows for <span class="font-bold text-white">multiple valuation inflations through future subsidiary IPOs</span>, providing unprecedented returns for our seed-stage investors.
-                    </p>
-                </div>
-                
-                <div class="mt-12 sm:mt-16">
-                    <a href="mailto:info@wechnology.com" class="fomo-button text-base sm:text-lg py-4 px-8">
-                        Don't Miss This. Request The Full Pitch Deck.
-                    </a>
-                </div>
-            </div>
-        </section>
+                               <div class="max-w-4xl mx-auto mt-12 sm:mt-16 text-center">
+ Type:                  <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                        Nigeria is the Beachhead. <span class="text-gradient">A Global Empire is the Goal.</span>
+                    </h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
+                        This &#8358;131.9M investment captures the &#8358;3.44T Nigerian market. The <span class="font-extrabold">real</span> opportunity is replicating this "Offline-First, AI, Human Moat" model across the globe.
+                    </p>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">
+                        We will establish subsidiaries in Ghana, Kenya, Egypt, and beyond, capturing each nation's un-served MSME market. This strategy allows for <span class="font-bold text-white">multiple valuation inflations through future subsidiary IPOs</span>, providing unprecedented returns for our seed-stage investors.
+                    </p>
+                </div>
+                
+                <div class="mt-12 sm:mt-16">
+                    <a href="mailto:info@wechnology.com" class="fomo-button text-base sm:text-lg py-4 px-8">
+                        Don't Miss This. Request The Full Pitch Deck.
+                    </a>
+                </div>
+            </div>
+        </section>
 
-        <!-- NEW AI CHAT SECTION -->
-        <section id="ai-chat-section">
-            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
-                    See "<span id="demo-ai-name">WisdomAI</span>" in Action
-                </h2>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
-                    This is a simulation of our Offline-First AI. Run the demo to see how a trader would interact with it in local languages.
-                </p>
+               <section id="ai-chat-section">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl tracking-tighter">
+                    See "<span id="demo-ai-name">WisdomAI</span>" in Action
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300">
+                    This is a simulation of our Offline-First AI. Run the demo to see how a trader would interact with it in local languages.
+                </p>
 
-                <div id="chat-container" class="mt-12">
-                    <div id="chat-header">
-                        Chat with <span id="ai-name-header">...</span>
-                    </div>
-                    <div id="chat-messages">
-                        <!-- Messages will be added here -->
-                    </div>
-                    <div id="input-area">
-                        <select id="demoLanguage" class="text-black">
-                            <option value="pidgin">Run Pidgin Demo</option>
-                            <option value="english">Run English Demo</option>
-                            <option value="yoruba">Run Yoruba Demo</option>
-                            <option value="igbo">Run Igbo Demo</option>
-                            <option value="hausa">Run Hausa Demo</option>
-                        </select>
-                        <button id="runDemoBtn" class="fomo-button">Run Demo</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <div id="chat-container" class="mt-12">
+                    <div id="chat-header">
+                        Chat with <span id="ai-name-header">...</span>
+ A                 </div>
+                    <div id="chat-messages">
+                                           </div>
+                 A,  <div id="input-area">
+                        <select id="demoLanguage" class="text-black">
+                            <option value="pidgin">Run Pidgin Demo</option>
+                            <option value="english">Run English Demo</option>
+                            <option value="yoruba">Run Yoruba Demo</option>
+                            <option value="igbo">Run Igbo Demo</option>
+                            <option value="hausa">Run Hausa Demo</option>
+ A                     </select>
+                        <button id="runDemoBtn" class="fomo-button">Run Demo</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- AI Name Modal -->
-        <div id="ai-name-modal">
-            <div id="modal-content">
-                <h2>Welcome to Wechnology!</h2>
-                <p class="mt-2 text-gray-300">What would you like to name your personal AI assistant?</p>
-                <input type="text" id="ai-name-input" placeholder="e.g., WisdomAI, MyAssistant" value="WisdomAI">
-                <button id="set-name-btn" class="fomo-button">Set Name & Start</button>
-            </div>
-        </div>
+               <div id="ai-name-modal">
+            <div id="modal-content">
+                <h2>Welcome to Wechnology!</h2>
+     TA            <p class="mt-2 text-gray-300">What would you like to name your personal AI assistant?</p>
+ Read              <input type="text" id="ai-name-input" placeholder="e.g., WisdomAI, MyAssistant" value="WisdomAI">
+                <button id="set-name-btn" class="fomo-button">Set Name & Start</button>
+            </div>
+        </div>
 
-    </main>
+    </main>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t" style="border-color: rgba(255, 255, 255, 0.1);">
-        <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-400">
-                &copy; 2025 Wechnology. We Are Technology.
-            </p>
-        </div>
-    </footer>
+       <footer class="py-12 border-t" style="border-color: rgba(255, 255, 255, 0.1);">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">
+                &copy; 2025 Wechnology. We Are Technology.
+ A            </p>
+        </div>
+    </footer>
 
 
-    <!-- AI CHAT JAVASCRIPT -->
-    <script>
-        // AI Chat Demo Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const aiNameModal = document.getElementById('ai-name-modal');
-            const aiNameInput = document.getElementById('ai-name-input');
-            const setNameBtn = document.getElementById('set-name-btn');
-            const aiNameHeader = document.getElementById('ai-name-header');
-            const demoAiName = document.getElementById('demo-ai-name');
-            const chatMessages = document.getElementById('chat-messages');
-            const runDemoBtn = document.getElementById('runDemoBtn');
-            const demoLanguageSelect = document.getElementById('demoLanguage');
+       <script>
+        // AI Chat Demo Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const aiNameModal = document.getElementById('ai-name-modal');
+            const aiNameInput = document.getElementById('ai-name-input');
+            const setNameBtn = document.getElementById('set-name-btn');
+            const aiNameHeader = document.getElementById('ai-name-header');
+            const demoAiName = document.getElementById('demo-ai-name');
+            const chatMessages = document.getElementById('chat-messages');
+            const runDemoBtn = document.getElementById('runDemoBtn');
+            const demoLanguageSelect = document.getElementById('demoLanguage');
 
-            let aiName = "WisdomAI"; // Default
-            let demoRunning = false;
+            let aiName = "WisdomAI"; // Default
+            let demoRunning = false;
 
-            // --- Demo Conversations ---
-            const conversations = {
-                pidgin: [
-                    { type: 'user', text: 'WisdomAI, how many Super Pack I get for store?' },
-                    { type: 'ai', text: 'Oga, you get 14 cartons and 3 loose pieces.' },
-                    { type: 'user', text: 'Who be my biggest debtor?' },
-                    { type: 'ai', text: 'Na Oga Chinedu. E dey owe ₦15,500 since last week Tuesday.' },
-                    { type: 'user', text: 'Abeg, send am message for WhatsApp.' },
-                    { type: 'ai', 'text': 'Okay, I don queue the message. As soon as internet show, e go send.' }
-                ],
-                english: [
-                    { type: 'user', text: 'Hello, can you summarize my sales for last week?' },
-                    { type: 'ai', text: 'Certainly. Last week you made ₦185,200 in total sales. Your best-selling item was "Indomie Super Pack" with 45 units sold.' },
-                    { type: 'user', text: 'What is my current stock level for Coke PET bottles?' },
-                    { type: 'ai', text: 'You currently have 3 crates and 8 individual bottles of "Coke (PET bottle)" in stock.' },
-                    { type: 'user', text: 'Great, thank you.' },
-                    { type: 'ai', text: 'You\'re welcome! Is there anything else I can help with?' }
-                ],
-                yoruba: [
-                    { type: 'user', text: 'Ẹ kaalẹ, Wisdom. Elo ni iye iresi ti mo ni ninu ile itaja?' },
-                    { type: 'ai', text: 'Oga, ẹ ni apo iresi mẹfa (6) ati idaji (1/2) apo kan.' },
-                    { type: 'user', text: 'Ta ni o jẹ mi lowo ju?' },
-                    { type: 'ai', text: 'Arabinrin Funke ni. O jẹ yin ni ₦8,000. O ti to ọjọ mẹta.' },
-                    { type: 'user', text: 'Ṣe o le ran mi leti lati pe e ni ọla?' },
-                    { type: 'ai', text: 'Mo ti ṣeto olurannileti fun ọla ni 10 AM. O seun.' }
-                ],
-                igbo: [
-                    { type: 'user', text: 'WisdomAI, kedu maka ahịa m taa?' },
-                    { type: 'ai', text: 'Nnaa, I rere ihe ruru ₦45,000 taa. Ihe ị kacha ree bụ "Peak Milk".' },
-                    { type: 'user', text: 'Biko, lee ole "Indomie" fọdụrụ.' },
-                    { type: 'ai', text: 'Ị nwere katọn 12 na iberibe 5 fọdụrụ.' },
-                    { type: 'user', text: 'Daalụ.' },
-                    { type: 'ai', text: 'Nnoo. Kedu ihe ọzọ m nwere ike ime nye gị?' }
-                ],
-                hausa: [
-                    { type: 'user', text: 'Sannu, Wisdom. Nawa ne kudin da ake bina a waje?' },
-                    { type: 'ai', text: 'Ranka ya dade, ana bin ka ₦52,000 gaba daya. Alhaji Musa ne ke da babban bashi na ₦20,000.' },
-                    { type: 'user', text: 'Yaya tallace-tallace na wannan makon?' },
-                    { type: 'ai', text: 'Tallace-tallacen wannan makon sun kai ₦120,000. Kun fi siyar da shinkafa da sukari.' },
-                    { type: 'user', text: 'Na gode.' },
-                    { type: 'ai', text: 'Barka dai. Ina nan don taimakawa.' }
-                ]
-            };
+            // --- Demo Conversations ---
+            const conversations = {
+                pidgin: [
+                    { type: 'user', text: 'WisdomAI, how many Super Pack I get for store?' },
+                    { type: 'ai', text: 'Oga, you get 14 cartons and 3 loose pieces.' },
+                    { type: 'user', text: 'Who be my biggest debtor?' },
+                    { type: 'ai', text: 'Na Oga Chinedu. E dey owe &#8358;15,500 since last week Tuesday.' },
+                    { type: 'user', text: 'Abeg, send am message for WhatsApp.' },
+                    { type: 'ai', 'text': 'Okay, I don queue the message. As soon as internet show, e go send.' }
+                ],
+                english: [
+                    { type: 'user', text: 'Hello, can you summarize my sales for last week?' },
+                    { type: 'ai', text: 'Certainly. Last week you made &#8358;185,200 in total sales. Your best-selling item was "Indomie Super Pack" with 45 units sold.' },
+                    { type: 'user', text: 'What is my current stock level for Coke PET bottles?' },
+                    { type: 'ai', text: 'You currently have 3 crates and 8 individual bottles of "Coke (PET bottle)" in stock.' },
+                    { type: 'user', text: 'Great, thank you.' },
+                    { type: 'ai', text: 'You\'re welcome! Is there anything else I can help with?' }
+                ],
+                yoruba: [
+                    { type: 'user', text: 'Ẹ kaalẹ, Wisdom. Elo ni iye iresi ti mo ni ninu ile itaja?' },
+                    { type: 'ai', text: 'Oga, ẹ ni apo iresi mẹfa (6) ati idaji (1/2) apo kan.' },
+                    { type: 'user', text: 'Ta ni o jẹ mi lowo ju?' },
+                    { type: 'ai', text: 'Arabinrin Funke ni. O jẹ yin ni &#8358;8,000. O ti to ọjọ mẹta.' },
+ NOT                  { type: 'user', text: 'Ṣe o le ran mi leti lati pe e ni ọla?' },
+                    { type: 'ai', text: 'Mo ti ṣeto olurannileti fun ọla ni 10 AM. O seun.' }
+ Type:              ],
+                igbo: [
+         TA            { type: 'user', text: 'WisdomAI, kedu maka ahịa m taa?' },
+                    { type: 'ai', text: 'Nnaa, I rere ihe ruru &#8358;45,000 taa. Ihe ị kacha ree bụ "Peak Milk".' },
+                    { type: 'user', text: 'Biko, lee ole "Indomie" fọdụrụ.' },
+                    { type: 'ai', text: 'Ị nwere katọn 12 na iberibe 5 fọdụrụ.' },
+                    { type: 'user', text: 'Daalụ.' },
+                    { type: 'ai', text: 'Nnoo. Kedu ihe ọzọ m nwere ike ime nye gị?' }
+                ],
+                hausa: [
+                    { type: 'user', text: 'Sannu, Wisdom. Nawa ne kudin da ake bina a waje?' },
+                    { type: 'ai', text: 'Ranka ya dade, ana bin ka &#8358;52,000 gaba daya. Alhaji Musa ne ke da babban bashi na &#8358;20,000.' },
+   TA                { type: 'user', text: 'Yaya tallace-tallace na wannan makon?' },
+                    { type: 'ai', text: 'Tallace-tallacen wannan makon sun kai &#8358;120,000. Kun fi siyar da shinkafa da sukari.' },
+                    { type: 'user', text: 'Na gode.' },
+                    { type: 'ai', text: 'Barka dai. Ina nan don taimakawa.' }
+                ]
+            };
 
-            // --- Functions ---
-            function init() {
-                aiNameModal.style.display = 'block'; // Show modal on load
-            }
+            // --- Functions ---
+            function init() {
+     content:          aiNameModal.style.display = 'block'; // Show modal on load
+            }
 
-            function setAIName() {
-                const name = aiNameInput.value.trim();
-                if (name) {
-                    aiName = name;
-                    aiNameHeader.innerText = name;
-                    demoAiName.innerText = name; // Update heading
-                    aiNameModal.style.display = 'none';
-                    addMessage('ai', `Hello! I'm ${aiName}, your offline-first AI assistant. Run a demo to see how I work!`);
-                }
-            }
+            function setAIName() {
+                const name = aiNameInput.value.trim();
+                if (name) {
+                    aiName = name;
+                    aiNameHeader.innerText = name;
+                    demoAiName.innerText = name; // Update heading
+                    aiNameModal.style.display = 'none';
+                    addMessage('ai', `Hello! I'm ${aiName}, your offline-first AI assistant. Run a demo to see how I work!`);
+                }
+            }
 
-            function addMessage(type, text) {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message', type === 'user' ? 'user-message' : 'ai-message');
-                messageElement.innerText = text;
-                chatMessages.appendChild(messageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
-            }
+            function addMessage(type, text) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', type === 'user' ? 'user-message' : 'ai-message');
+                messageElement.innerText = text;
+   Details:              chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+            }
 
-            function runDemo() {
-                if (demoRunning) return; // Prevent multiple demos at once
-                demoRunning = true;
-                runDemoBtn.disabled = true;
-                runDemoBtn.innerText = 'Running...';
-                
-                const lang = demoLanguageSelect.value;
-                const conversation = conversations[lang];
-                
-                chatMessages.innerHTML = ''; // Clear chat
-                addMessage('ai', `Running ${lang} demo...`);
+            function runDemo() {
+                if (demoRunning) return; // Prevent multiple demos at once
+                demoRunning = true;
+                runDemoBtn.disabled = true;
+                runDemoBtn.innerText = 'Running...';
+                
+                const lang = demoLanguageSelect.value;
+ ci            const conversation = conversations[lang];
+                
+                chatMessages.innerHTML = ''; // Clear chat
+                addMessage('ai', `Running ${lang} demo...`);
 
-                let delay = 1500; // Start delay
+                let delay = 1500; // Start delay
 
-                conversation.forEach((message, index) => {
-                    setTimeout(() => {
-                        addMessage(message.type, message.text);
-                        
-                        // If this is the last message, re-enable the button
-                        if (index === conversation.length - 1) {
-                            demoRunning = false;
-                            runDemoBtn.disabled = false;
-                            runDemoBtn.innerText = 'Run Demo';
-                        }
-                    }, delay);
-                    delay += (message.type === 'user' ? 1500 : 2500); // User messages faster, AI slower
-                });
-            }
+           D,    conversation.forEach((message, index) => {
+                    setTimeout(() => {
+                        // --- MODIFICATION START ---
+                        // Create a regex to find "WisdomAI" or "Wisdom", case-insensitive and global
+ img                    const regex = /WisdomAI|Wisdom/gi; 
+                        // Replace all occurrences with the user-set aiName
+                        const dynamicText = message.text.replace(regex, aiName); 
+                        
+                        addMessage(message.type, dynamicText); // Use the new dynamic text
+ Details:                    // --- MODIFICATION END ---
+                        
+                        // If this is the last message, re-enable the button
+                        if (index === conversation.length - 1) {
+                            demoRunning = false;
+                            runDemoBtn.disabled = false;
+ TA                       runDemoBtn.innerText = 'Run Demo';
+                        }
+                    }, delay);
+                    delay += (message.type === 'user' ? 1500 : 2500); // User messages faster, AI slower
+                });
+            }
 
-            // --- Event Listeners ---
-            setNameBtn.addEventListener('click', setAIName);
-            aiNameInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    setAIName();
-                }
-            });
-            runDemoBtn.addEventListener('click', runDemo);
+            // --- Event Listeners ---
+            setNameBtn.addEventListener('click', setAIName);
+            aiNameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+ ci                setAIName();
+                }
+            });
+            runDemoBtn.addEventListener('click', runDemo);
 
-            // Start the process
-            init();
-        });
+ content:          // Start the process
+            init();
+        });
 
-    </script>
+    </script>
 
 </body>
 </html>
-
