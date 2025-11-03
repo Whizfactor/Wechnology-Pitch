@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wechnology: Investor Pitch Deck</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Raleway & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js for rendering markdown responses -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <style>
+        /* Brand Colors & Fonts (Matched to Brand Spec) */
+        :root {
+            --brand-blue: #0F31AD; /* Primary Brand Colour */
+            --brand-green: #00A859; /* Secondary Accents */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind gray-50 */
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
+        
+        /* Main slide container */
+        .slide-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            /* Ensure height is full viewport minus header/footer */
+            height: calc(100vh - 80px - 80px); 
+            min-height: calc(100vh - 160px);
+        }
+        
+        /* Individual slide styling */
+        .slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem; /* p-10 */
+            width: 100%;
+            text-align: center;
+            overflow-y: auto; /* Allow vertical scroll if content is tall */
+        }
+
+        /* Slide 6 needs to start content from the top to avoid overlap */
+        #slide-6 {
+            justify-content: flex-start; 
+            padding-top: 4rem; /* Add margin-top/padding-top to clear the header */
+        }
+
+        /* Slide content wrapper for better layout */
+        .slide-content {
+            max-width: 1024px; /* lg:max-w-screen-lg */
+            width: 100%;
+        }
+        
+        /* Custom brand colors */
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .text-brand-blue { color: var(--brand-blue); }
+        .text-brand-green { color: var(--brand-green); }
+        .border-brand-green { border-color: var(--brand-green); }
+        
+        /* Hide scrollbar */
+        .slide-container::-webkit-scrollbar { display: none; }
+        .slide-container { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Navigation dots */
+        .nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem; /* gap-3 */
+            padding: 1rem; /* p-4 */
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px; /* rounded-full */
+            background-color: #cbd5e1; /* bg-slate-300 */
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        
+        .nav-dot.active {
+            background-color: var(--brand-blue); /* bg-brand-blue */
+        }
+        
+        /* Header */
+        header {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2.5rem; /* px-10 */
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
+        }
+        
+        /* Slide Counter */
+        .slide-counter {
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* font-semibold */
+            color: #475569; /* text-slate-600 */
+        }
+
+        /* AI Chat styles (Existing) */
+        .ai-chat-history {
+            height: 200px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            border-radius: 0.375rem; /* rounded-md */
+            border: 1px solid #e5e7eb; /* border-gray-200 */
+            padding: 0.75rem; /* p-3 */
+            text-align: left;
+            space-y: 0.75rem; /* space-y-3 */
+        }
+        .ai-chat-bubble {
+            padding: 0.5rem 1rem; /* p-2 px-4 */
+            border-radius: 0.75rem; /* rounded-lg */
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .ai-chat-bubble.user {
+            background-color: var(--brand-blue);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .ai-chat-bubble.ai {
+            background-color: #f3f4f6; /* bg-gray-100 */
+            color: #1f2937; /* text-gray-800 */
+            align-self: flex-start;
+            margin-right: auto;
+        }
+        .ai-chat-bubble.ai-loading {
+            background-color: #f3f4f6; /* bg-gray-100 */
+            color: #1f2937; /* text-gray-800 */
+            align-self: flex-start;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* gap-2 */
+        }
+        .ai-preset-btn {
+            background-color: #f9fafb; /* bg-gray-50 */
+            border: 1px solid #e5e7eb; /* border-gray-200 */
+            color: var(--brand-blue);
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* font-semibold */
+            padding: 0.5rem 0.75rem; /* p-2 px-3 */
+            border-radius: 9999px; /* rounded-full */
+            transition: all 0.2s;
+        }
+        .ai-preset-btn:hover {
+            background-color: #f3f4f6; /* bg-gray-100 */
+            transform: translateY(-1px);
+        }
+
+        /* Simple loading spinner */
+        .spinner {
+            width: 1rem; /* w-4 */
+            height: 1rem; /* h-4 */
+            border: 2px solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header>
+        <div class="logo flex items-center">
+            <!-- Logo Image using the uploaded file -->
+            <img 
+                src="uploaded:WT + black-G (white bg).png-ae854fa7-342b-4c97-9c48-6fcbd3f22f34" 
+                alt="Wechnology Logo: We Are Technology" 
+                class="h-10 mr-3" 
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <!-- Fallback text logo (hidden by default if image loads) -->
+            <div class="hidden">
+                <h1 class="text-3xl font-extrabold text-brand-blue">WECHNOLOGY</h1>
+                <p class="text-sm font-semibold text-gray-600 tracking-wide">We Are Technology</p>
+            </div>
+        </div>
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">10</span>
+        </div>
+    </header>
+
+    <!-- Slide Container -->
+    <main id="slide-container" class="slide-container">
+        
+        <!-- Slide 1: Cover -->
+        <section class="slide bg-brand-blue text-white" id="slide-1">
+            <div class="slide-content space-y-6">
+                <h1 class="text-6xl md:text-8xl font-extrabold" style="font-family: 'Raleway', sans-serif;">
+                    The Resilience OS
+                </h1>
+                <h2 class="text-3xl md:text-4xl font-light text-gray-200">
+                    Empowering the 40 million businesses
+                    <br class="hidden md:block">
+                    shut out of the digital economy.
+                </h2>
+                <p class="text-2xl text-brand-green font-semibold" style="color: var(--brand-green);">
+                    Offline-First. AI-Powered. Human-Networked.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 2: The Problem (Updated with Images) -->
+        <section class="slide bg-white" id="slide-2">
+            <div class="slide-content space-y-12">
+                <h1 class="text-5xl md:text-6xl text-brand-blue">The "Infrastructure Tax" is Killing 99% of Businesses.</h1>
+                <p class="text-2xl text-gray-600">
+                    Modern software was not built for Nigeria. It fails when the real world hits.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Problem 1: No Light (Using uploaded image: Copilot_20251103_005329.jpg) -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-xl border-t-4 border-red-600">
+                        <img 
+                            src="uploaded:Copilot_20251103_005329.jpg-8a7b25ac-2d75-4ed4-bcd4-800c20c8160c" 
+                            alt="A person sitting in the dark with a candle, symbolizing no light." 
+                            class="h-40 w-full object-cover rounded-lg mb-4 shadow-inner mx-auto"
+                            onerror="this.src='https://placehold.co/400x160/ef4444/ffffff?text=NO+LIGHT+Image'"
+                        />
+                        <h3 class="text-3xl font-bold text-gray-800">NO LIGHT</h3>
+                        <p class="text-lg text-gray-600 mt-2">Unreliable power means systems are down more than they are up.</p>
+                    </div>
+                    <!-- Problem 2: No Internet (Using uploaded image: Copilot_20251103_005611.jpg) -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-xl border-t-4 border-red-600">
+                        <img 
+                            src="uploaded:Copilot_20251103_005611.jpg-1afcc8fb-576d-49a5-96a0-888191827fef" 
+                            alt="A hand struggling to hold a phone with a weak signal, symbolizing poor internet." 
+                            class="h-40 w-full object-cover rounded-lg mb-4 shadow-inner mx-auto"
+                            onerror="this.src='https://placehold.co/400x160/ef4444/ffffff?text=NO+INTERNET+Image'"
+                        />
+                        <h3 class="text-3xl font-bold text-gray-800">NO INTERNET</h3>
+                        <p class="text-lg text-gray-600 mt-2">Cloud-only software is useless with unstable, expensive data. A sale can't wait.</p>
+                    </div>
+                    <!-- Problem 3: Too Hard (Using uploaded image: Copilot_20251103_005335.jpg) -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-xl border-t-4 border-red-600">
+                        <img 
+                            src="uploaded:Copilot_20251103_005335.jpg-d0c3fcef-13e6-4d9c-a566-112757110959" 
+                            alt="A busy market trader making manual notes in a ledger book, symbolizing complexity." 
+                            class="h-40 w-full object-cover rounded-lg mb-4 shadow-inner mx-auto"
+                            onerror="this.src='https://placehold.co/400x160/ef4444/ffffff?text=TOO+HARD+Image'"
+                        />
+                        <h3 class="text-3xl font-bold text-gray-800">TOO HARD</h3>
+                        <p class="text-lg text-gray-600 mt-2">Complex, text-based software priced in USD wasn't built for a Lagos trader.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 3: The Un-Served Market -->
+        <section class="slide bg-gray-900 text-white" id="slide-3">
+            <div class="slide-content space-y-6">
+                <h2 class="text-2xl text-brand-green font-semibold uppercase tracking-widest">This Isn't a Niche. It's the Economy.</h2>
+                <h1 class="text-7xl md:text-8xl font-extrabold text-white">40,000,000</h1>
+                <p class="text-3xl md:text-4xl text-gray-300">
+                    MSMEs in Nigeria alone, shut out of the digital economy.
+                    <br>They are the artisans, traders, and shop owners who power our nation.
+                </p>
+                <p class="text-2xl text-white bg-brand-green p-4 rounded-lg inline-block">
+                    We are building for them, *with* them.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 4: The Solution (NOW INTERACTIVE) -->
+        <section class="slide bg-white" id="slide-4">
+            <div class="slide-content space-y-12">
+                <h1 class="text-5xl md:text-6xl text-brand-blue">The Resilience OS</h1>
+                <p class="text-2xl text-gray-600">
+                    We're not just "software." We are the first platform built for the *reality* of African business.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <!-- Pillar 1: Offline-First -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md border-t-4 border-brand-blue">
+                        <h3 class="text-3xl font-bold text-gray-800">1. Offline-First (The Foundation)</h3>
+                        <p class="text-lg text-gray-600 mt-3">
+                            NEPA can take light, the network can go down. A Wechnology user *never* stops working.
+                            Sales, inventory, and accounting work 100% offline and sync seamlessly when a connection returns.
+                        </p>
+                    </div>
+                    
+                    <!-- Pillar 2: AI (WisdomAI) - INTERACTIVE DEMO -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-2xl border-t-4 border-brand-green md:col-span-2">
+                        <h3 class="text-3xl font-bold text-gray-800 text-center mb-4">
+                            2. ✨ WisdomAI (Try The Magic)
+                        </h3>
+                        
+                        <!-- Chat History -->
+                        <div class="ai-chat-history flex flex-col space-y-3 mb-3" id="ai-chat-history">
+                            <div class="ai-chat-bubble ai">
+                                Hello Oga! I be WisdomAI. Ask me question or try one of the buttons below.
+                            </div>
+                        </div>
+                        
+                        <!-- Preset Buttons -->
+                        <div class="flex flex-wrap gap-2 mb-4 justify-center">
+                            <button class="ai-preset-btn" data-prompt="How many bags of rice I get?">"How many bags of rice I get?"</button>
+                            <button class="ai-preset-btn" data-prompt="Summarize my sales for last week.">"Summarize my sales."</button>
+                            <button class="ai-preset-btn" data-prompt="Draft a message to my customer Chinedu who owes me money.">"Draft message to debtor."</button>
+                        </div>
+                        
+                        <!-- Chat Input -->
+                        <div class="flex gap-2">
+                            <input type="text" id="ai-chat-input" class="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:outline-none" placeholder="Type your question in English or Pidgin...">
+                            <button id="ai-send-btn" class="bg-brand-blue text-white font-bold py-3 px-5 rounded-lg shadow hover:bg-blue-800 transition-colors flex items-center justify-center">
+                                <!-- Send Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L6 12Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 5: Traction (The FOMO Proof) -->
+        <section class="slide bg-brand-blue text-white" id="slide-5">
+            <div class="slide-content space-y-6">
+                <h2 class="text-3xl text-brand-green font-semibold uppercase tracking-widest">The Market is Waiting.</h2>
+                <h1 class="text-6xl md:text-7xl font-extrabold text-white">We are targeting 10 LOIs in 6 months.</h1>
+                <p class="text-3xl md:text-4xl text-gray-300">
+                    This isn't a cold start. These Letters of Intent give us direct access to an ecosystem of
+                </p>
+                <div class="bg-white text-gray-900 p-8 rounded-lg shadow-2xl my-6 inline-block">
+                    <h2 class="text-7xl md:text-8xl font-extrabold text-brand-blue">44,000+</h2>
+                    <p class="text-3xl font-semibold text-gray-700">Potential Businesses</p>
+                </div>
+                <p class="text-2xl text-gray-200">Our go-to-market is not a "hope." It's a pipeline.</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: The 7-Month Rocket Ship (Layout Fixed) -->
+        <section class="slide bg-white" id="slide-6">
+            <div class="slide-content space-y-10 w-full">
+                <h1 class="text-5xl md:text-6xl text-brand-blue">The 7-Month Rocket Ship</h1>
+                <p class="text-2xl text-gray-600">This is not a 5-year dream. This is a 7-month execution plan to profitability.</p>
+                
+                <!-- Timeline Container -->
+                <div class="w-full max-w-5xl mx-auto space-y-4">
+                    <!-- Timeline Item: M1-M2 -->
+                    <div class="flex items-center w-full">
+                        <div class="w-24 h-24 bg-gray-200 text-gray-800 rounded-full flex-shrink-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">M1-M2</span>
+                        </div>
+                        <div class="h-1 bg-gray-200 w-full"></div>
+                        <div class="bg-gray-100 p-4 rounded-lg shadow-md w-full ml-4 text-left">
+                            <h3 class="text-xl font-bold text-brand-blue">Build & Launch</h3>
+                            <p class="text-gray-700">Team hired. Legal done. MVP (Essential Tier) is live.</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item: M3 -->
+                    <div class="flex items-center w-full">
+                        <div class="w-24 h-24 bg-brand-green text-white rounded-full flex-shrink-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">M3</span>
+                        </div>
+                        <div class="h-1 bg-brand-green w-full"></div>
+                        <div class="bg-green-50 p-4 rounded-lg shadow-md w-full ml-4 text-left border-l-4 border-brand-green">
+                            <h3 class="text-xl font-bold text-brand-green">Ignition: 1,000 Customers</h3>
+                            <p class="text-gray-700 font-semibold">MRR: ₦6,000,000</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item: M4 -->
+                    <div class="flex items-center w-full">
+                        <div class="w-24 h-24 bg-brand-green text-white rounded-full flex-shrink-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">M4</span>
+                        </div>
+                        <div class="h-1 bg-brand-green w-full"></div>
+                        <div class="bg-green-50 p-4 rounded-lg shadow-md w-full ml-4 text-left border-l-4 border-brand-green">
+                            <h3 class="text-xl font-bold text-brand-green">Scaling: 2,200 Customers</h3>
+                            <p class="text-gray-700 font-semibold">MRR: ₦13,200,000</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item: M5 -->
+                    <div class="flex items-center w-full">
+                        <div class="w-24 h-24 bg-blue-800 text-white rounded-full flex-shrink-0 flex items-center justify-center ring-4 ring-brand-green ring-offset-2">
+                            <span class="text-xl font-bold">M5</span>
+                        </div>
+                        <div class="h-1 bg-blue-800 w-full"></div>
+                        <div class="bg-blue-50 p-4 rounded-lg shadow-md w-full ml-4 text-left border-l-4 border-blue-800">
+                            <h3 class="text-xl font-bold text-blue-800">PROFITABLE: 3,600 Customers</h3>
+                            <p class="text-gray-700 font-semibold">MRR: ₦21,600,000</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item: M6 -->
+                    <div class="flex items-center w-full">
+                        <div class="w-24 h-24 bg-blue-900 text-white rounded-full flex-shrink-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">M6</span>
+                        </div>
+                        <div class="h-1 bg-blue-900 w-full"></div>
+                        <div class="bg-blue-100 p-4 rounded-lg shadow-md w-full ml-4 text-left border-l-4 border-brand-blue">
+                            <h3 class="text-xl font-bold text-brand-blue">Self-Sustaining: 5,000 Customers</h3>
+                            <p class="text-gray-700 font-semibold">MRR: ₦30,000,000</p>
+                        </div>
+                    </div>
+                    <!-- Timeline Item: M7 -->
+                    <div class="flex items-center w-full">
+                        <div class="w-24 h-24 bg-blue-900 text-white rounded-full flex-shrink-0 flex items-center justify-center">
+                            <span class="text-xl font-bold">M7</span>
+                        </div>
+                        <div class="h-1 bg-blue-900 w-full"></div>
+                        <div class="bg-blue-100 p-4 rounded-lg shadow-md w-full ml-4 text-left border-l-4 border-brand-blue">
+                            <h3 class="text-xl font-bold text-brand-blue">Dominance: 7,000 Customers</h3>
+                            <p class="text-gray-700 font-semibold">MRR: ₦42,000,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Why We Win -->
+        <section class="slide bg-gray-100" id="slide-7">
+            <div class="slide-content space-y-10">
+                <h1 class="text-5xl md:text-6xl text-brand-blue">It's Not a Fair Fight</h1>
+                <p class="text-2xl text-gray-600">Our competitors are selling textbooks. We are selling a magic wand.</p>
+                <div class="overflow-x-auto shadow-lg rounded-lg">
+                    <table class="w-full text-left text-lg">
+                        <thead class="bg-gray-800 text-white text-xl">
+                            <tr>
+                                <th class="p-6">Feature</th>
+                                <th class="p-6 bg-brand-blue">WECHNOLOGY</th>
+                                <th class="p-6">TallyPrime</th>
+                                <th class="p-6">Zoho / Odoo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                            <tr class="border-b">
+                                <td class="p-6 font-semibold">Core Architecture</td>
+                                <td class="p-6 bg-green-50 font-bold text-brand-green">Offline-First</td>
+                                <td class="p-6 font-semibold">Offline (Clunky)</td>
+                                <td class="p-6 bg-red-50 text-red-700 font-bold">Cloud-Only (Fails)</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-6 font-semibold">Accessibility</td>
+                                <td class="p-6 bg-green-50 font-bold text-brand-green">AI Voice (Pidgin)</td>
+                                <td class="p-6">Text-based (Needs training)</td>
+                                <td class="p-6">Complex Menus</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-6 font-semibold">Go-to-Market</td>
+                                <td class="p-6 bg-green-50 font-bold text-brand-green">Human Network (WECHAGE)</td>
+                                <td class="p-6">Resellers (VI / Ikeja)</td>
+                                <td class="p-6">Digital Ads (Expensive)</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-6 font-semibold">Pricing Model</td>
+                                <td class="p-6 bg-green-50 font-bold text-brand-green">Per-Business (Naira)</td>
+                                <td class="p-6">Per-User (Naira)</td>
+                                <td class="p-6 bg-red-50 text-red-700 font-bold">Per-User (USD)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 font-semibold">Built For...</td>
+                                <td class="p-6 bg-green-50 font-bold text-brand-green">The Shop Owner</td>
+                                <td class="p-6">The Accountant</td>
+                                <td class="p-6">The Enterprise</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: The Team -->
+        <section class="slide bg-white" id="slide-8">
+            <div class="slide-content space-y-10">
+                <h1 class="text-5xl md:text-6xl text-brand-blue">The Right Team for This Mission</h1>
+                <p class="text-2xl text-gray-600">Visionaries, builders, and hustlers who understand the market because we *are* the market.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="text-center">
+                        <div class="w-48 h-48 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-gray-500">[Your Photo]</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">Your Name</h3>
+                        <p class="text-xl font-semibold text-brand-blue">CEO / Co-Founder</p>
+                        <p class="text-gray-600 mt-2">The Vision. Manages the GTM, investor relations, and partnerships.</p>
+                    </div>
+                    <!-- Team Member 2 -->
+                    <div class="text-center">
+                        <div class="w-48 h-48 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-gray-500">[CTO Photo]</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">[CTO Name]</h3>
+                        <p class="text-xl font-semibold text-brand-blue">CTO / Co-Founder</p>
+                        <p class="text-gray-600 mt-2">The Architect. Manages the offline-sync, AI integration, and infrastructure.</p>
+                    </div>
+                    <!-- Team Member 3 -->
+                    <div class="text-center">
+                        <div class="w-48 h-48 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-gray-500">[CCO/CMO Photo]</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">[CCO/CMO Name]</h3>
+                        <p class="text-xl font-semibold text-brand-blue">CCO / Head of GTM</p>
+                        <p class="text-gray-600 mt-2">The Storyteller. Manages the WECHAGE network and marketing.</p>
+                    </div>
+                </div>
+                <p class="text-xl text-gray-700 font-semibold pt-6">Supported by a world-class team of 28+ engineers, designers, and support specialists.</p>
+            </div>
+        </section>
+
+        <!-- Slide 9: The Ask (CORRECTED FINANCIALS) -->
+        <section class="slide bg-gray-100" id="slide-9">
+            <div class="slide-content space-y-10">
+                <h1 class="text-5xl md:text-6xl text-brand-blue">Join The Mission</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-xl text-center">
+                        <h2 class="text-2xl font-bold text-gray-500 uppercase">The Ask</h2>
+                        <!-- CORRECTED: N131.9M -->
+                        <p class="text-7xl font-extrabold text-brand-blue my-4">₦131.9M</p>
+                        <!-- CORRECTED: 7-month plan -->
+                        <p class="text-2xl text-gray-700">To fund our 7-month plan, scale the team, and build the WECHAGE network.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-xl text-center">
+                        <h2 class="text-2xl font-bold text-gray-500 uppercase">The Goal (by M7)</h2>
+                        <p class="text-7xl font-extrabold text-brand-green my-4">7,000+</p>
+                        <p class="text-2xl text-gray-700">Paying Customers</p>
+                        <p class="text-4xl font-bold text-gray-800 mt-4">₦42M+ MRR</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-xl w-full">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-6">Use of Funds (7 Months Runway)</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-10 flex overflow-hidden">
+                        <!-- CORRECTED PERCENTAGES (55.6 + 20.2 + 5.7 + 18.5 = 100) -->
+                        <!-- 1. Team (55.6%) -->
+                        <div class="flex items-center justify-center h-full bg-brand-blue" style="width: 55.6%" title="Team & Salaries (55.6%)">
+                            <span class="text-white font-bold text-sm">Team (55.6%)</span>
+                        </div>
+                        <!-- 2. Infra (20.2%) -->
+                        <div class="flex items-center justify-center h-full bg-gray-700" style="width: 20.2%" title="Infrastructure (20.2%)">
+                            <span class="text-white font-bold text-sm">Infra (20.2%)</span>
+                        </div>
+                        <!-- 3. Mkt (5.7%) -->
+                        <div class="flex items-center justify-center h-full bg-brand-green" style="width: 5.7%" title="Marketing (5.7%)">
+                            <span class="text-white font-bold text-sm">Mkt (5.7%)</span>
+                        </div>
+                        <!-- 4. Cont. (18.5%) -->
+                        <div class="flex items-center justify-center h-full bg-red-600" style="width: 18.5%" title="Contingency (18.5%)">
+                            <span class="text-white font-bold text-sm">Cont. (18.5%)</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-sm text-gray-600 mt-2">
+                         <p>Team: 55.6%</p>
+                         <p>Infra: 20.2%</p>
+                         <p>Mkt: 5.7%</p>
+                         <p>Contingency: 18.5%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 10: The Close -->
+        <section class="slide bg-brand-blue text-white" id="slide-10">
+            <div class="slide-content space-y-8">
+                <h1 class="text-6xl md:text-8xl font-extrabold" style="font-family: 'Raleway', sans-serif;">
+                    WECHNOLOGY
+                </h1>
+                <h2 class="text-4xl font-light text-gray-200">
+                    When people think Technology,
+                    <br>
+                    they will think <span class="font-semibold text-brand-green" style="color: var(--brand-green);">Wechnology.</span>
+                </h2>
+                <div class="pt-8">
+                    <h3 class="text-3xl font-semibold">Wisdom [Your Last Name]</h3>
+                    <p class="text-2xl text-gray-300">CEO & Co-Founder</p>
+                    <p class="text-2xl text-gray-300">[Your Email] | [Your Phone]</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-t border-gray-200 py-4 px-10 flex justify-between items-center" style="height: 80px;">
+        <button id="prevBtn" class="bg-brand-blue text-white font-bold py-2 px-6 rounded-lg shadow hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            Previous
+        </button>
+        <div class="nav-dots" id="nav-dots-container">
+            <!-- Dots will be injected by JS -->
+        </div>
+        <button id="nextBtn" class="bg-brand-blue text-white font-bold py-2 px-6 rounded-lg shadow hover:bg-blue-800 transition-colors">
+            Next
+        </button>
+    </nav>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Slide Navigation Logic ---
+            const slideContainer = document.getElementById('slide-container');
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            const currentSlideEl = document.getElementById('current-slide');
+            const totalSlidesEl = document.getElementById('total-slides');
+            const dotsContainer = document.getElementById('nav-dots-container');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            let currentSlide = 0;
+            totalSlidesEl.textContent = totalSlides;
+
+            // Create nav dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('nav-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.dataset.slide = i;
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            }
+            
+            const dots = document.querySelectorAll('.nav-dot');
+
+            function updateUI(slideIndex) {
+                // Update dots
+                dots.forEach((dot, index) => {
+                    if (index === slideIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                // Update slide counter
+                currentSlideEl.textContent = slideIndex + 1;
+                
+                // Update buttons
+                prevBtn.disabled = slideIndex === 0;
+                nextBtn.disabled = slideIndex === totalSlides - 1;
+            }
+
+            function goToSlide(slideIndex) {
+                if (slideIndex < 0 || slideIndex >= totalSlides) return;
+                
+                const slideWidth = slides[slideIndex].offsetWidth;
+                slideContainer.scrollTo(slideWidth * slideIndex, 0);
+                currentSlide = slideIndex;
+                updateUI(currentSlide);
+            }
+
+            // Button listeners
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentSlide - 1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentSlide + 1);
+            });
+
+            // Update on scroll (for manual scroll snapping)
+            let scrollTimer = null;
+            slideContainer.addEventListener('scroll', () => {
+                if(scrollTimer) {
+                    clearTimeout(scrollTimer);
+                }
+                scrollTimer = setTimeout(() => {
+                    const slideWidth = slideContainer.offsetWidth;
+                    const newSlide = Math.round(slideContainer.scrollLeft / slideWidth);
+                    
+                    if (newSlide !== currentSlide) {
+                        currentSlide = newSlide;
+                        updateUI(currentSlide);
+                    }
+                }, 100); // Debounce
+            });
+            
+            // Initial UI update
+            updateUI(0);
+            
+            // --- Gemini AI Chat Logic ---
+            const chatHistory = document.getElementById('ai-chat-history');
+            const chatInput = document.getElementById('ai-chat-input');
+            const sendBtn = document.getElementById('ai-send-btn');
+            const presetBtns = document.querySelectorAll('.ai-preset-btn');
+            
+            const apiKey = ""; // API key will be provisioned by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const systemPrompt = "You are 'WisdomAI', a helpful and friendly AI assistant for a Nigerian business owner. Your persona is warm, reachable, and you speak clear, simple English and Nigerian Pidgin. Your goal is to help the user manage their shop. When asked a business query (like stock or sales), you must provide a helpful, concise answer in character. For example, if asked 'how many bags of rice I get?', you should respond with something like 'Oga, you get 14 bags and 3 loose pieces.' or 'Right now, stock dey show 14 bags.' If the user asks 'Summarize my sales for last week.', reply with 'Oga, you do well! Sales for last week reach ₦150,000, with plenty Indomie and Coke moving.' If asked to draft a message to a debtor, provide a polite but firm Pidgin message. If the user asks a general question, just be a helpful AI assistant. Keep responses very short and conversational (2-3 sentences max).";
+
+            // Function to append a message to the chat history
+            function appendMessage(sender, text) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('ai-chat-bubble', sender);
+                
+                // Sanitize and render text (basic innerText to prevent XSS)
+                // Use marked.parse for AI responses
+                if (sender === 'ai') {
+                    bubble.innerHTML = marked.parse(text);
+                } else {
+                    bubble.textContent = text;
+                }
+                
+                chatHistory.appendChild(bubble);
+                chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to bottom
+            }
+
+            // Function to show loading indicator
+            function showLoading() {
+                const loadingBubble = document.createElement('div');
+                loadingBubble.classList.add('ai-chat-bubble', 'ai-loading');
+                loadingBubble.id = 'ai-loading-bubble';
+                
+                const spinner = document.createElement('div');
+                spinner.classList.add('spinner');
+                
+                const text = document.createElement('span');
+                text.textContent = "WisdomAI dey think...";
+                
+                loadingBubble.appendChild(spinner);
+                loadingBubble.appendChild(text);
+                chatHistory.appendChild(loadingBubble);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
+
+            // Function to hide loading indicator
+            function hideLoading() {
+                const loadingBubble = document.getElementById('ai-loading-bubble');
+                if (loadingBubble) {
+                    loadingBubble.remove();
+                }
+            }
+
+            // Function to call Gemini API
+            async function callGeminiAPI(prompt, retries = 3, delay = 1000) {
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 429 && retries > 0) { // Handle throttling
+                            await new Promise(res => setTimeout(res, delay));
+                            return callGeminiAPI(prompt, retries - 1, delay * 2); // Exponential backoff
+                        }
+                        throw new Error(`API error: ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        return candidate.content.parts[0].text;
+                    } else {
+                        throw new Error("No valid response from AI.");
+                    }
+                } catch (error) {
+                    console.error("Error calling Gemini API:", error);
+                    return "Sorry, Oga, my network dey do somehow. Try again small.";
+                }
+            }
+
+            // Handle sending a message
+            async function handleSend() {
+                const prompt = chatInput.value.trim();
+                if (!prompt) return;
+                
+                appendMessage('user', prompt);
+                chatInput.value = '';
+                showLoading();
+                
+                const aiResponse = await callGeminiAPI(prompt);
+                
+                hideLoading();
+                appendMessage('ai', aiResponse);
+            }
+
+            // Event Listeners
+            sendBtn.addEventListener('click', handleSend);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleSend();
+                }
+            });
+
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const prompt = btn.dataset.prompt;
+                    appendMessage('user', prompt);
+                    showLoading();
+                    
+                    const aiResponse = await callGeminiAPI(prompt);
+                    
+                    hideLoading();
+                    appendMessage('ai', aiResponse);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
