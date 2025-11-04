@@ -765,18 +765,26 @@
                 
                 const lang = demoLanguageSelect.value;
                 const conversation = conversations[lang];
+
+                // Create a regex to find "WisdomAI" or "Wisdom", case-insensitive, globally
+                const nameRegex = /WisdomAI|Wisdom/gi;
+                // Create a personalized version of the conversation
+                const personalizedConversation = conversation.map(msg => ({
+                    ...msg,
+                    text: msg.text.replace(nameRegex, aiName)
+                }));
                 
                 chatMessages.innerHTML = ''; // Clear chat
                 addMessage('ai', `Running ${lang} demo...`);
 
                 let delay = 1500; // Start delay
 
-                conversation.forEach((message, index) => {
+                personalizedConversation.forEach((message, index) => {
                     setTimeout(() => {
                         addMessage(message.type, message.text);
                         
                         // If this is the last message, re-enable the button
-                        if (index === conversation.length - 1) {
+                        if (index === personalizedConversation.length - 1) {
                             demoRunning = false;
                             runDemoBtn.disabled = false;
                             runDemoBtn.innerText = 'Run Demo';
@@ -803,4 +811,3 @@
 
 </body>
 </html>
-
