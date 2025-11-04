@@ -772,26 +772,19 @@
                 let delay = 1500; // Start delay
 
                 conversation.forEach((message, index) => {
-                    setTimeout(() => {
-                        // === THIS IS THE LOGIC YOU REQUESTED ===
-                        // Create a regex to find "WisdomAI" or "Wisdom", case-insensitive and global
-                        const regex = /WisdomAI|Wisdom/gi; 
-                        // Replace all occurrences with the user-set aiName
-                        const dynamicText = message.text.replace(regex, aiName); 
-                        
-                        addMessage(message.type, dynamicText); // Use the new dynamic text
- Details:                  // ======================================
-                        
-                        // If this is the last message, re-enable the button
-                        if (index === conversation.length - 1) {
-                 s          demoRunning = false;
-                            runDemoBtn.disabled = false;
-                            runDemoBtn.innerText = 'Run Demo';
-                        }
-                    }, delay);
-                    delay += (message.type === 'user' ? 1500 : 2500); // User messages faster, AI slower
-                });
-            }
+                    setTimeout(() => {
+                        addMessage(message.type, message.text);
+                        
+                        // If this is the last message, re-enable the button
+                        if (index === conversation.length - 1) {
+                            demoRunning = false;
+                            runDemoBtn.disabled = false;
+                            runDemoBtn.innerText = 'Run Demo';
+                        }
+                    }, delay);
+                    delay += (message.type === 'user' ? 1500 : 2500); // User messages faster, AI slower
+                });
+            }
 
             // --- Event Listeners ---
             setNameBtn.addEventListener('click', setAIName);
